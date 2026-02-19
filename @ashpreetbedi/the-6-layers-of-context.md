@@ -25,16 +25,21 @@ Instead of fine-tuning or retraining, Dash learns through two complementary syst
 Static Knowledge: Validated queries, business context, table schemas, data quality notes, metric definitions, tribal knowledge and gotchas. These are curated by your team and maintained alongside Dash (it also updates successful queries as it comes across them).
 Continuous Learning: Patterns that Dash discovers through trial and error. The more you use Dash, the better it gets. Eg: Columns named `state` in one table map to `status` in another. It also learns what your team is focused on: preparing for an IPO? Dash learns that S-1 metrics live in a separate dataset, that "revenue" means ARR not bookings, and that the board wants cohort retention broken out by enterprise vs SMB. Every learning becomes a data point that improves Dash.
 I call this gpu-poor continuous learning (no GPUs are harmed in these experiments) and it's literally 5 lines of code:
-python
+
+```python
 learning=LearningMachine(
-knowledge=data_agent_learnings,
-user_profile=UserProfileConfig(mode=LearningMode.AGENTIC),
-user_memory=UserMemoryConfig(mode=LearningMode.AGENTIC),
-learned_knowledge=LearnedKnowledgeConfig(mode=LearningMode.AGENTIC),
+    knowledge=data_agent_learnings,
+    user_profile=UserProfileConfig(mode=LearningMode.AGENTIC),
+    user_memory=UserMemoryConfig(mode=LearningMode.AGENTIC),
+    learned_knowledge=LearnedKnowledgeConfig(mode=LearningMode.AGENTIC),
 )
-Build your own
+```
+
+## Build your own
+
 Follow the README for an in-depth guide. Here's a quick start:
-python
+
+```shell
 git clone https://github.com/agno-agi/dash && cd dash
 cp example.env .env  # Add OPENAI_API_KEY
 
@@ -42,24 +47,35 @@ docker compose up -d --build
 
 docker exec -it dash-api python -m dash.scripts.load_data
 docker exec -it dash-api python -m dash.scripts.load_knowledge
+```
+
 This loads sample data (F1 race data from 1950-2020) and the knowledge base (table metadata, validated queries, business rules).
-Connect to the UI
+
+## Connect to the UI
+
 Dash comes with a UI out of the box (via Agno). Use it to interact with Dash, view sessions and traces:
+
 Open os.agno.com
 Add OS → Local → http://localhost:8000
 Connect
-0:01 / 1:04
+
 Try these on the F1 dataset:
-shell
+
+```shell
 - Who won the most F1 World Championships?
 - How many races has Lewis Hamilton won?
 - Compare Ferrari vs Mercedes points 2015-2020
-Run evals
+```
+
+## Run evals
+
 Dash ships with an extensive evaluation suite. String matching, LLM grading, and golden SQL comparison. Extend and add your own, this is one of those projects where evals work surprisingly well.
-shell
+
+```shell
 docker exec -it dash-api python -m dash.evals.run_evals         # string matching
 docker exec -it dash-api python -m dash.evals.run_evals -g      # LLM grader
 docker exec -it dash-api python -m dash.evals.run_evals -g -r   # both + golden SQL
+```
 Closing thoughts
 Data agents are one of the best enterprise use cases for AI right now. Every company (over a certain size) should have one. Vercel has d0, OpenAI built one. Dash is my attempt to make that accessible to everyone.
 GitHub: github.com/agno-agi/dash

@@ -17,9 +17,11 @@ Run Locally (5 minutes)
 Prerequisites:
 Install Docker
 Get an OpenAI API key
-Setup
+## Setup
+
 Clone the repo and export your OpenAI API key:
-shell
+
+```shell
 git clone \
 https://github.com/agno-agi/agentos-railway-template.git \
 agentos-railway
@@ -27,32 +29,49 @@ agentos-railway
 cd agentos-railway
 
 export OPENAI_API_KEY="sk-***"
+```
+
 Start the application (API + Database):
-shell
+
+```shell
 docker compose up -d --build
-That's it. Your system is running. Here's how it looks:
-0:01 / 0:35
-Connect to the UI
+```
+
+That's it. Your system is running.
+
+## Connect to the UI
+
 Open os.agno.com
 Click Add OS → Local
 Enter `http://localhost:8000` as the URL
+
 Now chat with Pal:
-plaintext
+
+```
 - Note: decided to use Postgres for the new project - better JSON support
 
 - Research event sourcing patterns and save the key findings
 
 - What do I know about event sourcing?
-Deploy to Production (10 minutes)
+```
+
+## Deploy to Production (10 minutes)
+
 I've made it easy to deploy to Railway - just login and run a script.
-Prerequisites
+
+### Prerequisites
+
 Install the Railway CLI
-Deploy
+
+### Deploy
+
 Login to Railway and run the deploy script:
-shell
+
+```shell
 railway login
 
 ./scripts/railway_up.sh
+```
 The script provisions PostgreSQL, configures environment variables, and deploys your system. Give it a few minutes for the services to spin up.
 Connect to the UI
 Open os.agno.com

@@ -41,9 +41,11 @@ Agents introduce probabilistic reasoning into the execution path.
 The same prompt can produce different outputs depending on context, memory, and retrieval. Trust must therefore be engineered differently. Guardrails, evaluation, logging, and post response checks must be part of the execution model. They need to be built into the runtime semantics.
 Interaction. Governance. Trust.
 This is different from anything we expected from previous languages.
-What this looks like in practice
+## What this looks like in practice
+
 Here Gcode, a lightweight coding agent that writes, reviews, and iterates on code. It remembers project conventions, retrieves knowledge, learns from past runs, and operates within explicit governance boundaries.
-python
+
+```python
 from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
 from agno.learn import LearnedKnowledgeConfig, LearningMachine, LearningMode
@@ -52,41 +54,47 @@ from agno.tools.coding import CodingTools
 from agno.tools.reasoning import ReasoningTools
 
 gcode = Agent(
-name="Gcode",
-model=OpenAIResponses(id="gpt-5.2"),
-db=SqliteDb(db_file="agno.db"),
-instructions=instructions,
+    name="Gcode",
+    model=OpenAIResponses(id="gpt-5.2"),
+    db=SqliteDb(db_file="agno.db"),
+    instructions=instructions,
 
-# Knowledge: searchable long-term memory the agent can query
-knowledge=gcode_knowledge,
-search_knowledge=True,
+    # Knowledge: searchable long-term memory the agent can query
+    knowledge=gcode_knowledge,
+    search_knowledge=True,
 
-# Learning: the agent extracts and stores its own learnings over time
-learning=LearningMachine(
-knowledge=gcode_learnings,
-learned_knowledge=LearnedKnowledgeConfig(mode=LearningMode.AGENTIC),
-),
+    # Learning: the agent extracts and stores its own learnings over time
+    learning=LearningMachine(
+        knowledge=gcode_learnings,
+        learned_knowledge=LearnedKnowledgeConfig(mode=LearningMode.AGENTIC),
+    ),
 
-# Tools: sandboxed file ops + chain-of-thought reasoning
-tools=[CodingTools(base_dir=workspace, all=True), ReasoningTools()],
+    # Tools: sandboxed file ops + chain-of-thought reasoning
+    tools=[CodingTools(base_dir=workspace, all=True), ReasoningTools()],
 
-# Memory: learn user preferences
-enable_agentic_memory=True,
+    # Memory: learn user preferences
+    enable_agentic_memory=True,
 
-# Context: add the last 10 runs to context
-add_history_to_context=True,
-num_history_runs=10,
-markdown=True,
+    # Context: add the last 10 runs to context
+    add_history_to_context=True,
+    num_history_runs=10,
+    markdown=True,
 )
+```
+
 Notice what is being defined:
-Knowledge as a first class primitive
-Learning as a built in capability
-Tools as controlled extensions
-Memory and historical context as defaults
-A runtime that governs how the system executes
+
+- Knowledge as a first class primitive
+- Learning as a built in capability
+- Tools as controlled extensions
+- Memory and historical context as defaults
+- A runtime that governs how the system executes
+
 These are not helper utilities or 3rd party integrations. They're the vocabulary of the system.
+
 This is what a programming language does. It gives you the right primitives for the era you are building in. You define the behavior. The language enforces it.
-Every era gets the language it needs
+
+## Every era gets the language it needs
 COBOL abstracted business logic away from assembly. C abstracted system engineering without hiding it. Python abstracted memory management and low level system primitives to accelerate iteration.
 Each language captured the dominant abstraction of its era.
 The agentic era introduces a new abstraction: systems that reason, remember, and decide at runtime.

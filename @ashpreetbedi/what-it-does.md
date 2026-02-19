@@ -10,23 +10,31 @@
 What it does
 Pal is a personal agent that acts like a second brain.
 It captures notes, bookmarks, people, and meetings. It can research the web and save findings (thanks Exa for the free MCP). Then I can ask, “what do I know about X?” and it connects the dots.
-Capture
-Here's me sharing some notes with it
-plaintext
+## Capture
+
+Here's me sharing some notes with it:
+
+```
 Note: decided to use Postgres for the new project - better JSON support
 
 Bookmark https://docs.agno.com/first-multi-agent-system - great intro
+```
 
-0:01 / 0:13
-Research
+## Research
+
 Here's me asking it to do some research:
-plaintext
+
+```
 Research event sourcing patterns and save the key findings
-Retrieve
-Ofcourse let's ask it to retrieve and pull information
-plaintext
+```
+
+## Retrieve
+
+Of course let's ask it to retrieve and pull information:
+
+```
 What do I know about event sourcing?
-0:01 / 0:33
+```
 What makes it different
 Pal learns. It’s not just storage and retrieval. It improves with every interaction.
 Pal has two storage systems (by design).
@@ -40,10 +48,13 @@ Pal learns continuously. It learns:
 - from the people you meet (names, context, and follow-ups)
 Pal compounds. The biggest advantage is that it improves its future behavior based on what worked and what broke. For example, if loading notes fails because a table is missing a primary key, it learns to create the notes table with a primary key by default next time.
 I’ve only been using it for 6 hours, but the goal is that day 30 Pal is noticeably better than day 1 Pal.
-Try it
-Run locally (about 2 minutes)
+## Try it
+
+### Run locally (about 2 minutes)
+
 Clone the repo, copy env file and add your OpenAI API key:
-shell
+
+```shell
 git clone \
 https://github.com/agno-agi/agentos-railway-template.git \
 agentos-railway
@@ -51,23 +62,34 @@ agentos-railway
 cd agentos-railway
 
 cp example.env .env  # Add your OPENAI_API_KEY
+```
+
 Start the application (API + Database):
-shell
+
+```shell
 docker compose up -d --build
-0:01 / 0:35
-Connect to AgentOS and start chatting
+```
+
+Connect to AgentOS and start chatting:
+
 Open os.agno.com
 Click "Add OS" → "Local"
 Enter `http://localhost:8000` in the URL
-Deploy to production (Railway)
+
+### Deploy to production (Railway)
+
 Pretty easy to deploy this to railway, just login and use the script i've provided:
-shell
+
+```shell
 railway login
 ./scripts/railway_up.sh
+```
+
 Give it a few minutes for services to spin up.
-0:01 / 1:15
-Connect to control plane
-Openos.agno.com
+
+Connect to control plane:
+
+Open os.agno.com
 Click "Add OS" → "Live"
 Enter your Railway domain
 Built with Agno. Research powered by @ExaAILabs free MCP server - web search, company lookup, and people search out of the box. Thanks Exa 🙏

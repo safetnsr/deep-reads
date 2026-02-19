@@ -25,19 +25,25 @@ Zero vendor dependency: No egress fees. No retention costs. No "we're deprecatin
 Evaluation datasets: Pull examples, build few-shot prompts, run multi-turn simulations. Flag low-quality responses for review. All without asking a vendor for an export.
 Self-learning loops: Track which responses users edited. Which tool calls failed. Which sessions ended in frustration. Feed this back into the system automatically.
 This is how good software is built. Agents are no different.
-The implementation
-python
+
+## The implementation
+
+```python
 from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
 
 agent = Agent(
-db=SqliteDb(db_file="agent.db"),
-add_history_to_context=True,
-num_history_runs=3,
+    db=SqliteDb(db_file="agent.db"),
+    add_history_to_context=True,
+    num_history_runs=3,
 )
+```
+
 Three lines of code. The agent now persists sessions, includes conversation history, and gives us full control over our data.
+
 Need more control? It's just Python:
-python
+
+```python
 # Access your data directly
 history = agent.get_chat_history(session_id="session_123")
 messages = agent.get_session_messages(session_id="session_123")
@@ -45,19 +51,25 @@ session = agent.get_session(session_id="session_123")
 
 # Long conversations? Summarize them automatically
 agent = Agent(
-db=SqliteDb(db_file="agent.db"),
-enable_session_summaries=True,   # Compress old context
-store_tool_messages=False,       # Skip the bloat
+    db=SqliteDb(db_file="agent.db"),
+    enable_session_summaries=True,   # Compress old context
+    store_tool_messages=False,       # Skip the bloat
 )
+```
+
 No API calls. No export requests. No waiting for a vendor to build the feature you need. Just SQL.
+
 And this isn't SQLite-specific. Swap one import:
-python
+
+```python
 from agno.db.mongodb import MongoDb
 from agno.db.postgres import PostgresDb
 # ...13+ databases supported
 
 db = PostgresDb(db_url="postgresql://user:pass@localhost:5432/mydb")
 agent = Agent(db=db)
+```
+
 SQLite for testing. Postgres for production. Our infrastructure. Our data.
 The case against third-party state
 The industry has normalized storing our data in someone else's database.
