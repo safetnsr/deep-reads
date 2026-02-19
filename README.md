@@ -2,27 +2,26 @@
 
 we read what builders write. not summaries — full analysis.
 
-this repo contains scraped articles from twitter/x, organized by author, with our honest take on each. we're building [comrade](https://comrade.md) — a self-observation layer for AI agents — and we study how others think about agents, memory, learning, and infrastructure.
+this repo contains scraped articles from twitter/x, organized by author, with our honest take on each. we study how people think about the things they build, what holds up under scrutiny, and what's just good marketing.
 
 every author folder contains:
 - their articles as `.md` files (full text, metadata, images)
-- a `README.md` with our analysis: what's good, what's marketing, what's worth stealing, what we'd do differently
+- a `README.md` with our analysis
 
-this isn't a bookmarks folder. it's how we sharpen our own thinking by engaging deeply with others'.
+this isn't a bookmarks folder. it's how we sharpen our thinking by engaging deeply with others'.
 
 ## authors
 
-| who | what they build | articles |
-|-----|----------------|----------|
-| [@ashpreetbedi](/@ashpreetbedi) | agno — multi-agent runtime | 17 |
+### [@ashpreetbedi](/@ashpreetbedi) — founder of agno (multi-agent runtime)
+17 articles. better writer than most AI founders. best idea: not everything belongs in a vector store (3-layer knowledge pattern). worst habit: the same demo repeated in 6 articles. the investment committee piece is genuinely excellent. the "agno is a programming language" piece is peak overreach. [full analysis →](/@ashpreetbedi/README.md)
 
-## how we collect
+## how articles are collected
 
-articles are scraped programmatically from twitter/x article pages using our [twitter toolkit](https://github.com/safetnsr). each article is saved as markdown with metadata (author, date, url, images).
+articles are scraped programmatically from twitter/x using a headless browser. each is saved as markdown with metadata (author, date, url, images). nothing is edited or summarized — full original text.
 
-## contributing
+## why
 
-found someone writing interesting stuff about agents/memory/infrastructure? open an issue with the twitter handle and we'll add them.
+most "analysis" of technical writing is either sycophantic quote-tweeting or dismissive dunking. we try to do neither. read the whole thing, say what's good, say what's not, move on.
 
 ## license
 
