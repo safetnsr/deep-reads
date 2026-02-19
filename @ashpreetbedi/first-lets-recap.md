@@ -7,7 +7,11 @@
 
 ---
 
-First, Let's Recap
+On Monday I introduced Learning Machines and yesterday I shared that it's finally working. Today I'll show you how it works under the hood.
+
+⚠️ WARNING: TECHNICAL CONTENT AHEAD
+
+# First, Let's Recap
 
 After reading hundreds of papers on agentic memory and trying out every possible tool, I came to the simple conclusion that maybe we're looking at memory wrong.
 
@@ -15,17 +19,21 @@ Memory is just... learning. Learning about the user, the task at hand, learning 
 
 So I built Learning Machines: A system that helps agents continuously learn from every interaction.
 
-I started working on it dec 31, and got a basic working version yesterday. Here's the PR for those interested: learning-machine-v0
+I started working on it dec 31, and got a basic working version yesterday. Here's the PR for those interested: 
+
+[learning-machine-v0](https://github.com/agno-agi/agno/pull/5897)
 
 Now let's dig into the technical details.
 
-## The Learning Protocol
+# The Learning Protocol
 
 The key behind it all is the Learning Protocol. It's a simple interface for building Learning Stores -- user profiles, session context, learned knowledge, entity memory, etc.
 
 Let's take a look at the protocol:
 
-```python
+python
+
+```
 @runtime_checkable
 class LearningStore(Protocol):
     """Protocol that all learning stores must implement."""
@@ -56,38 +64,39 @@ Five functions. Everything else is optional.
 
 Why this matters: You can build your own learning store in ~50 lines. Most memory systems are thousands of lines of config. This is ~50. Legal docs. Medical records. Codebases. Sales pipelines. Whatever your domain needs.
 
-You can even build personalized LearningStores for your writing styles, for your daily to-do's, for your emails, for  your shopping lists. The real value of this approach is its extensibility.
+You can even build personalized LearningStores for your writing styles, for your daily to-do's, for your emails, for your shopping lists. The real value of this approach is its extensibility.
 
-## The Learning Machine
+# The Learning Machine
 
 The protocol lets you build stores. But stores need to plug into the agent somehow. That's what LearningMachine does.
 
 ```
 User Message ──────► Recall from Stores ◄────────┐
-│                    │
-▼                    │
-Build Context              │
-│                    │
-▼                    │ LearningMachine
-
-Agent Responds (with tools)      │
-│                    │
-▼                    │
-Extract & Process             │
-│                    │
-▼                    │
-Update Stores (agent learns) ──────┴──► Periodic Curation
+                            │                    │
+                            ▼                    │
+                      Build Context              │
+                            │                    │
+                            ▼                    │ LearningMachine
+                Agent Responds (with tools)      │
+                            │                    │
+                            ▼                    │
+                   Extract & Process             │
+                            │                    │
+                            ▼                    │
+              Update Stores (agent learns) ──────┴──► Periodic Curation
 ```
 
 Recall → Build context → Run agent → Extract → Store. That's the loop.
 
-## Developer Experience
+# Developer Experience
 
 Three levels of complexity:
 
-### Dead Simple
+## Dead Simple
 
-```python
+python
+
+```
 agent = Agent(
     model=model,
     db=db,
@@ -95,9 +104,11 @@ agent = Agent(
 )
 ```
 
-### Pick What You Want
+## Pick What You Want
 
-```python
+python
+
+```
 agent = Agent(
     model=model,
     db=db,
@@ -110,9 +121,11 @@ agent = Agent(
 )
 ```
 
-### Full Control
+## Full Control
 
-```python
+python
+
+```
 agent = Agent(
     model=model,
     db=db,
@@ -134,11 +147,13 @@ agent = Agent(
 )
 ```
 
-## Build Your Own Learning Store
+# Build Your Own Learning Store
 
 This is the win. Implement the protocol, plug it in:
 
-```python
+python
+
+```
 @dataclass
 class ProjectContextStore:
     """Custom store for project-specific context."""
@@ -175,41 +190,43 @@ learning = LearningMachine(
 
 This is the whole point behind the Learning Machine.
 
-## Built-in Stores
+# Built-in Stores
 
 Phase 1 includes four stores:
 
-### User Profile
+## User Profile
 
-- **What it captures:** Name, work context, preferences, communication style.
-- **Scope:** Per user (`user_id`).
-- **Storage:** Database (direct lookup).
+- What it captures: Name, work context, preferences, communication style.
+- Scope: Per user (`user\_id`).
+- Storage: Database (direct lookup).
 
-### Session Context
+## Session Context
 
-- **What it captures:** Summary of conversation, goal, plan steps, progress.
-- **Scope:** Per session (`session_id`).
-- **Storage:** Database (direct lookup).
+- What it captures: Summary of conversation, goal, plan steps, progress.
+- Scope: Per session (`session\_id`).
+- Storage: Database (direct lookup).
 
-### Learned Knowledge
+## Learned Knowledge
 
-- **What it captures:** Insights, patterns, best practices. Things that apply across users.
-- **Scope:** Configurable namespace -- private to a user, shared with a team, or global.
-- **Storage:** Knowledge base (vector search).
+- What it captures: Insights, patterns, best practices. Things that apply across users.
+- Scope: Configurable namespace -- private to a user, shared with a team, or global.
+- Storage: Knowledge base (vector search).
 
-### Entity Memory
+## Entity Memory
 
-- **What it captures:** Facts, events, and relationships about external things -- companies, people, projects.
-- **Scope:** Configurable namespace.
-- **Storage:** Database (direct lookup + search).
+- What it captures: Facts, events, and relationships about external things -- companies, people, projects.
+- Scope: Configurable namespace.
+- Storage: Database (direct lookup + search).
 
-## Key Design Decisions
+# Key Design Decisions
 
-### Learning Modes
+## Learning Modes
 
 Different use cases need different extraction modes.
 
-```python
+python
+
+```
 class LearningMode(Enum):
     BACKGROUND = "background"   # Automatic extraction after each conversation
     AGENTIC = "agentic"         # Agent decides via tools
@@ -217,57 +234,51 @@ class LearningMode(Enum):
     HITL = "hitl"               # Human-in-the-loop approval (future)
 ```
 
-BACKGROUND is invisible. The user never sees extraction happening. This is what makes Claude's memory feel natural.
+- BACKGROUND is invisible. The user never sees extraction happening. This is what makes Claude's memory feel natural.
+- AGENTIC gives control. The agent decides what's worth remembering. You can see the tool calls. Less noise, more transparency.
+- PROPOSE is for medium-stakes learning. Agent suggests, human approves. Good for shared knowledge bases where bad data spreads.
+- HITL is for highest-stakes learning. Explicit human approval required.
 
-AGENTIC gives control. The agent decides what's worth remembering. You can see the tool calls. Less noise, more transparency.
-
-PROPOSE is for medium-stakes learning. Agent suggests, human approves. Good for shared knowledge bases where bad data spreads.
-
-HITL is for highest-stakes learning. Explicit human approval required.
-
-### Namespace Scoping
+## Namespace Scoping
 
 Some learnings should be private. Some should be shared. Namespaces enable this.
 
-```python
-# Private to this user
+python
 
+```
+# Private to this user
 LearnedKnowledgeConfig(namespace="user")
 
 # Shared within engineering team
-
 LearnedKnowledgeConfig(namespace="engineering")
 
 # Shared with everyone
-
 LearnedKnowledgeConfig(namespace="global")
 ```
 
 This is what enables cross-user learning. This is what made yesterday's experiment work -- Alice's insight helped Bob because they shared a namespace.
 
-### Entity Memory: Three-Tier Memory System
+## Entity Memory: Three-Tier Memory System
 
 Entities (people, companies, projects) hold different types of information:
 
-- **Facts:** Semantic knowledge ("Uses PostgreSQL", "Based in London")
-- **Events:** Episodic memories ("Launched v2 on Jan 15", "Raised Series A")
-- **Relationships:** Graph connections ("Bob is CEO of Acme", "Acme acquired StartupX")
+- Facts: Semantic knowledge ("Uses PostgreSQL", "Based in London")
+- Events: Episodic memories ("Launched v2 on Jan 15", "Raised Series A")
+- Relationships: Graph connections ("Bob is CEO of Acme", "Acme acquired StartupX")
 
 Flat list doesn't work. You need to query "what do we know about Acme" differently than "what happened with Acme."
 
-## What's Next
+# What's Next
 
-Phase 1 (now): Learning Protocol, Learning Machine + 4 Learning Stores. Built, currently testing and fixing bugs.
+- Phase 1 (now): Learning Protocol, Learning Machine + 4 Learning Stores. Built, currently testing and fixing bugs.
+- Phase 2: Decision Logs and Behavioral Feedback. Agents that know why they did what they did, and what worked.
+- Phase 3: Self-Improvement. This is the endgame. Agents that analyze their own failures and propose: "I should stop doing X." Human approves. Agent evolves. No retraining. No fine-tuning. Just learning.
 
-Phase 2: Decision Logs and Behavioral Feedback. Agents that know why they did what they did, and what worked.
+Want to dig in? Here's the PR: 
 
-Phase 3: Self-Improvement. This is the endgame. Agents that analyze their own failures and propose: "I should stop doing X." Human approves. Agent evolves. No retraining. No fine-tuning. Just learning.
-
-Want to dig in? Here's the PR: learning-machine-v0
+[learning-machine-v0](https://github.com/agno-agi/agno/pull/5897)
 
 Memory was step one. Learning is what comes next.
-
-Ashpreet Bedi
 
 ---
 

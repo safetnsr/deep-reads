@@ -7,28 +7,63 @@
 
 ---
 
-The Pitch vs. The Reality
+Evals are the holy grail of AI engineering. Or so we've been told.
+
+Two years. Billions in VC funding. Thousands of blog posts about "production-ready agents". An entire industry built around evaluation frameworks, observability platforms, and benchmarks.
+
+The result?
+
+- 11% of organizations have agents in production [
+
+  [source](https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2026/agentic-ai-strategy.html)
+
+  ]
+- 40%+ of agentic AI projects will be cancelled by 2027 [
+
+  [source](https://www.gartner.com/en/newsroom/press-releases/2024-10-22-gartner-says-over-40-percent-of-agentic-ai-projects-will-be-abandoned-by-2027)
+
+  ]
+- 80%+ never reach meaningful production [
+
+  [source](https://www.rand.org/pubs/research_reports/RRA2680-1.html)
+
+  ]
+
+If evals were the answer, these numbers would be different.. or higher.
+
+Here's what I've learned after 2+ years of shipping agents:
+
+> passing evals ≠ working product.
+
+You can have a green test suite and a broken product. You can hit 95% on your benchmark and watch your agent choke the moment a real user touches it. Evals don't get you to production. A working product does.
+
+# The Pitch vs. The Reality
 
 Here's what the eval-industrial complex told us:
-"Evals are the key to production-ready agents" — Databricks
+
+> "Evals are the key to production-ready agents" — 
+>
+> [Databricks](https://www.databricks.com/blog/key-production-ai-agents-evaluations)
 
 Here's what actually happens:
 
 You build an agent in a Python script. It works. You run your eval suite. Green lights everywhere. You demo it to stakeholders. They love it. Then you try to ship it: Everything falls apart.
 
-## What Evals Don't Test
+# What Evals Don't Test
 
 Here's what evals miss:
+
 Your agent isn't a function. It's a long-running, stateful process interacting with a user.
+
 A single response might take >30 seconds. Or 3 minutes. Or 10 minutes.. Traditional servers handle stateless request-response cycles in milliseconds. Your agent thinks, waits, calls tools, thinks again.
 
 Try fitting that into an eval with a 15-second timeout.
 
-State breaks at scale: Works great with 1 user on 1 container. Add more users? State bleeds across sessions. Add containers, follow the "file system is all you need" trend? State disappears.  Store it in a database? Now you're building infrastructure you didn't plan for.
+State breaks at scale: Works great with 1 user on 1 container. Add more users? State bleeds across sessions. Add containers, follow the "file system is all you need" trend? State disappears. Store it in a database? Now you're building infrastructure you didn't plan for.
 
 Streaming is harder than it looks. In your notebook, responses just appeared. In production, users stare at a blank screen for 8 seconds wondering if the app crashed. You try SSE. Then WebSockets. Then you realize you need durable streams that survive network hiccups, handle backpressure, and resume gracefully after disconnects.
 
-## The Trap: Evals Too Early
+# The Trap: Evals Too Early
 
 Here's the thing that really kills projects: writing test cases before you have a working product. Every hour spent writing evals is an hour not spent learning what your product actually needs. You're locking yourself into test cases for a system that doesn't exist yet.
 
@@ -43,7 +78,7 @@ The eval-industrial complex sold you on this idea that evals-first is discipline
 
 You can't evaluate what you can't run.
 
-## What Evals Are Actually Good For
+# What Evals Are Actually Good For
 
 I'm not saying evals are useless. They're critical for model providers shipping foundation models. If you're training GPT-5, you need benchmarks. Even for AI engineers building products on top of those models, evals help with:
 
@@ -66,9 +101,13 @@ You have a working agent in a Python script. Great. Now answer these:
 
 Evals don't answer any of these questions. The runtime does.
 
-## The Path Forward
+# The Path Forward
 
-I built Agno because I got tired of watching good agents die in the gap between "works in a notebook" and "runs in production"
+I built 
+
+[Agno](https://github.com/agno-agi/agno)
+
+ because I got tired of watching good agents die in the gap between "works in a notebook" and "runs in production"
 
 Agno is a runtime for agents. It handles the stuff evals can't test:
 
@@ -80,8 +119,6 @@ Agno is a runtime for agents. It handles the stuff evals can't test:
 The eval-industrial complex had their shot. Two years. Billions in funding. The production numbers haven't moved.
 
 Maybe it's time to focus on actually shipping.
-
-Ashpreet Bedi
 
 ---
 

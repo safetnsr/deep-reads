@@ -7,38 +7,42 @@
 
 ---
 
-Why an Investment Committee
+Most multi-agent tutorials show you one orchestration pattern applied to a toy problem. Four agents chat about the weather, agree with each other, and produce an answer that one agent could have written alone. The agents don't specialize. They don't disagree. They definitely don't learn.
+
+This post is different. We'll build an investment committee with seven specialist agents orchestrated across five distinct architectures, and show how the choice of architecture changes the quality of the outcome.
+
+> Here's the 
+>
+> [code](https://github.com/agno-agi/investment-committee)
+>
+>  if you want to dive in without the commentary.
+
+# Why an Investment Committee
 
 An investment committee is one of the oldest multi-agent systems in the world. A group of specialists, each with different expertise, different tools, different blind spots, evaluating opportunities and making capital allocation decisions together.
 
 It maps naturally to what multi-agent systems should demonstrate:
-Specialization matters. A single analyst covering macro, fundamentals, technicals, and risk produces shallow work in every dimension. Separate agents with separate tools go deeper.
 
-Orchestration matters. Should the chair call on analysts one by one? Should everyone speak simultaneously? Should we run a fixed process? The answer depends on the question.
-
-Memory matters. A committee that starts from scratch every meeting is useless. A committee that remembers what it decided last quarter, what mistakes it made, what patterns it discovered: that's an institution.
+- Specialization matters. A single analyst covering macro, fundamentals, technicals, and risk produces shallow work in every dimension. Separate agents with separate tools go deeper.
+- Orchestration matters. Should the chair call on analysts one by one? Should everyone speak simultaneously? Should we run a fixed process? The answer depends on the question.
+- Memory matters. A committee that starts from scratch every meeting is useless. A committee that remembers what it decided last quarter, what mistakes it made, what patterns it discovered: that's an institution.
 
 The system manages a $10M vehicle investing in US public equities. Every analysis runs against live market data. Every recommendation must comply with a real investment mandate with position limits, sector caps, and risk constraints. Nothing is simulated (except for the investments, of course).
 
-The Setup: 7 Agents, Real Data, Live Markets
+# The Setup: 7 Agents, Real Data, Live Markets
 
 The committee runs against live financial data via YFinance (free) and Exa web search (their MCP is free). Every agent is a specialist:
-Market Analyst (Sonnet 4.6): Macro trends, sector analysis, breaking news. Tools: Exa MCP + YFinance.
 
-Financial Analyst (Sonnet 4.6): Fundamentals, valuation, balance sheets. Tools: YFinance.
+- Market Analyst (Sonnet 4.6): Macro trends, sector analysis, breaking news. Tools: Exa MCP + YFinance.
+- Financial Analyst (Sonnet 4.6): Fundamentals, valuation, balance sheets. Tools: YFinance.
+- Technical Analyst (Sonnet 4.6): Price action, momentum, support/resistance levels. Tools: YFinance.
+- Risk Officer (Sonnet 4.6): Downside scenarios, position sizing, mandate compliance. Tools: YFinance.
+- Knowledge Agent (Sonnet 4.6): Memo archive + research library. Tools: FileTools / Vector Search.
+- Memo Writer (Sonnet 4.6): Synthesizes analysis into formal investment memos. Tools: FileTools.
+- Committee Chair (Opus 4.6): Final decisions, capital allocation.
 
-Technical Analyst (Sonnet 4.6): Price action, momentum, support/resistance levels. Tools: YFinance.
-
-Risk Officer (Sonnet 4.6): Downside scenarios, position sizing, mandate compliance. Tools: YFinance.
-
-Knowledge Agent (Sonnet 4.6): Memo archive + research library. Tools: FileTools / Vector Search.
-
-Memo Writer (Sonnet 4.6): Synthesizes analysis into formal investment memos. Tools: FileTools.
-
-Committee Chair (Opus 4.6): Final decisions, capital allocation.
-I'm using Yfinance and Exa via MCP because they're free.
-
-Real Gs should use paid options.
+> I'm using Yfinance and Exa via MCP because they're free.
+> Real Gs should use paid options.
 
 Specialist analysts use Sonnet: fast, capable, cost-effective for focused analysis. The Chair uses Opus: better reasoning for synthesizing conflicting perspectives and making final calls.
 
@@ -46,7 +50,9 @@ Every analyst shares two things. First, the committee's static context (mandate,
 
 Here's the common structure:
 
-```python
+python
+
+```
 from agno.agent import Agent
 from agno.models.anthropic import Claude
 from agno.learn import LearningMachine, LearnedKnowledgeConfig, LearningMode
@@ -62,7 +68,6 @@ You are the Risk Officer for a $10M investment committee.
 {COMMITTEE_CONTEXT}
 
 ## Your Role
-
 ...
 """
 
@@ -83,15 +88,17 @@ risk_officer = Agent(
 )
 ```
 
-That {COMMITTEE_CONTEXT} is doing more work than it looks. We'll come back to it.
+That {COMMITTEE\_CONTEXT} is doing more work than it looks. We'll come back to it.
 
 ## The 5 Architectures
 
 Here's the central insight: the same seven agents produce different results depending on how you orchestrate them.
 
-### Route: Call the Right Department
+## Route: Call the Right Department
 
-```python
+python
+
+```
 route_team = Team(
     mode=TeamMode.route,
     model=Claude(id="claude-opus-4-6"),
@@ -108,11 +115,17 @@ The simplest architecture. Every question goes to exactly one specialist.
 
 One question. One expert. No committee meeting required.
 
+[![](https://pbs.twimg.com/amplify_video_thumb/2024281728580243456/img/ONyFXfj_8xJoqCyb.jpg)](blob:https://x.com/59110a25-ca7b-42af-90f2-abedfb5c31c2)
+
+0:01 / 0:38
+
 Best for: Quick, targeted questions. When you know what you need.
 
-### Broadcast: Everyone Votes
+## Broadcast: Everyone Votes
 
-```python
+python
+
+```
 broadcast_team = Team(
     mode=TeamMode.broadcast,
     model=Claude(id="claude-opus-4-6"),
@@ -125,11 +138,17 @@ Now instead of one expert, the same question goes to all four analysts simultane
 
 Then the Chair synthesizes the independent perspectives, notes where analysts agree and disagree, and makes a final call.
 
+[![](https://pbs.twimg.com/amplify_video_thumb/2024282120412106752/img/8T4khjAl693iPU2W.jpg)](blob:https://x.com/d801ba21-21a8-42ea-82c3-51c557653277)
+
+0:01 / 1:18
+
 Best for: High-stakes allocation decisions. When you want the equivalent of a secret ballot before the chair decides.
 
-### Coordinate: The Chair Runs the Meeting
+## Coordinate: The Chair Runs the Meeting
 
-```python
+python
+
+```
 coordinate_team = Team(
     mode=TeamMode.coordinate,
     model=Claude(id="claude-opus-4-6"),
@@ -146,11 +165,17 @@ The chair adapts. If the Financial Analyst surfaces a red flag, the Chair might 
 
 Best for: Open-ended investment questions. "Should we invest?" "What do you think of this stock?"
 
-Important: Not financial advice. This took 7 minutes to decide whether it should jam 20% of the fund into microsoft (denied -- but still).
+[![](https://pbs.twimg.com/amplify_video_thumb/2024278934746009600/img/n5yvAiuzI_48XlGR.jpg)](blob:https://x.com/f51ab6f8-041a-4b63-b199-74d02910ce52)
 
-### Task Mode: The PM Assigns Work
+0:01 / 1:46
 
-```python
+> Important: Not financial advice. This took 7 minutes to decide whether it should jam 20% of the fund into microsoft (denied -- but still).
+
+## Task Mode: The PM Assigns Work
+
+python
+
+```
 task_team = Team(
     mode=TeamMode.tasks,
     model=Claude(id="claude-opus-4-6"),
@@ -161,9 +186,10 @@ task_team = Team(
 
 Ask "Deploy $1M across the top 5 AI stocks, no single position over 30%" and the Chair autonomously decomposes this into sub-tasks with dependencies:
 
+plaintext
+
 ```
 Task 1: Market Analyst    → Identify top 5 AI stocks
-
 Task 2: Financial Analyst → Deep dive fundamentals       (depends on 1)
 Task 3: Technical Analyst → Entry timing analysis        (depends on 1)
 Task 4: Risk Officer      → Portfolio risk assessment    (depends on 2, 3)
@@ -174,11 +200,13 @@ Tasks 2 and 3 run in parallel after Task 1 completes. Task 4 waits for both. Tas
 
 Best for: Complex, multi-step problems that a human PM would break into a project plan.
 
-Note: streaming is not yet supported on task mode, so I don't have a video for you. It's an SDK only feature at the moment.
+> Note: streaming is not yet supported on task mode, so I don't have a video for you. It's an SDK only feature at the moment.
 
-### Deterministic Workflow: The Assembly Line
+## Deterministic Workflow: The Assembly Line
 
-```python
+python
+
+```
 investment_workflow = Workflow(
     steps=[
         Step(name="Market Assessment", agent=market_analyst),
@@ -195,6 +223,8 @@ investment_workflow = Workflow(
 
 A fixed, repeatable pipeline. Market context first. Then fundamentals and technicals in parallel. Then risk. Then the memo. Then the final decision. Every stock goes through the exact same process.
 
+plaintext
+
 ```
 Market → ┌─ Financial ─┐ → Risk → Memo → Chair
          └─ Technical ─┘
@@ -202,8 +232,13 @@ Market → ┌─ Financial ─┐ → Risk → Memo → Chair
 
 No dynamic routing. No autonomous decomposition. The same rigorous process every time. Output from each step feeds into the next.
 
+[![](https://pbs.twimg.com/amplify_video_thumb/2024288744270905346/img/pVjkm7x6Loekv-mE.jpg)](blob:https://x.com/f015dd12-abc5-4784-9241-a4484f56b982)
+
+0:01 / 1:52
+
 Best for: Standardized, auditable reviews. When consistency and traceability matter more than flexibility.
-## Why Five Architectures
+
+# Why Five Architectures
 
 Most multi-agent tutorials present one architecture as the way to build multi-agent systems. Real problems demand flexibility:
 
@@ -215,19 +250,21 @@ Most multi-agent tutorials present one architecture as the way to build multi-ag
 
 A real investment team uses all of these patterns in the same day. Multi-agent systems should be equally flexible. All five architectures share the same seven agents. The agents don't change, only the orchestration does.
 
-## Three-Layer Knowledge (or: Stop Putting Everything in a vector store)
+# Three-Layer Knowledge (or: Stop Putting Everything in a vector store)
 
 Here's a mistake almost every multi-agent demo makes: dump all knowledge into a single vector database and hope that semantic search surfaces the right thing at the right time.
 
 This doesn't work for an investment committee. Consider three types of knowledge:
 
-1. The investment mandate says "maximum single position: 30% of fund." If the Risk Officer misses this because the vector search returned a different chunk, the committee approves a $5M position and violates its own rules. Risk limits should not be searchable. They should be unavoidable.
+The investment mandate says "maximum single position: 30% of fund." If the Risk Officer misses this because the vector search returned a different chunk, the committee approves a $5M position and violates its own rules. Risk limits should not be searchable. They should be unavoidable.
 
-2. The research library contains profiles on 50+ companies. When the Financial Analyst asks about NVIDIA's competitive moat, semantic search across the corpus is exactly the right tool. You don't want every company profile in the system prompt.
+The research library contains profiles on 50+ companies. When the Financial Analyst asks about NVIDIA's competitive moat, semantic search across the corpus is exactly the right tool. You don't want every company profile in the system prompt.
 
-3. Past investment memos are 2,000-word structured documents: thesis, analysis, risk assessment, committee decision. Chunk one into 512-token vector fragments and you lose the structure. You lose the connection between the thesis and the decision. You want to find the right memo and read all of it.
+Past investment memos are 2,000-word structured documents: thesis, analysis, risk assessment, committee decision. Chunk one into 512-token vector fragments and you lose the structure. You lose the connection between the thesis and the decision. You want to find the right memo and read all of it.
 
 Three types of knowledge. Three storage strategies:
+
+plaintext
 
 ```
 ┌──────────────────────────────────────────────────────┐
@@ -266,7 +303,9 @@ Three types of knowledge. Three storage strategies:
 
 The implementation is straightforward. Layer 1 is a Python f-string:
 
-```python
+python
+
+```
 # context/loader.py
 COMMITTEE_CONTEXT = load_context()  # reads mandate.md, risk_policy.md, process.md
 
@@ -277,14 +316,15 @@ instructions = f"""
 {COMMITTEE_CONTEXT}
 
 ## Your Role
-
 ...
 """
 ```
 
 Layer 2 is PgVector with hybrid search. Research documents are loaded once at startup:
 
-```python
+python
+
+```
 # app/main.py
 for subdir in ["companies", "sectors"]:
     path = research_dir / subdir
@@ -294,26 +334,26 @@ for subdir in ["companies", "sectors"]:
 
 Layer 3 is FileTools. The Knowledge Agent lists, searches, and reads memos as whole files.
 
-```python
-# Knowledge Agent: read-only access to memo archive
+python
 
+```
+# Knowledge Agent: read-only access to memo archive
 FileTools(base_dir=MEMOS_DIR, enable_read_file=True,
-         enable_list_files=True, enable_search_files=True)
+          enable_list_files=True, enable_search_files=True)
 
 # Memo Writer: also has write access to save new memos
-
 FileTools(base_dir=MEMOS_DIR, enable_save_file=True, ...)
 ```
 
-Just like Claude Code greps codebases, the Knowledge Agent greps memos.
+> Just like Claude Code greps codebases, the Knowledge Agent greps memos.
 
-Ask the Knowledge Agent "What did we decide about NVIDIA?" and it calls list_files(), finds nvda_2025_q3_buy.md, calls read_file(), and synthesizes: "Our last NVIDIA memo recommended BUY at $1.5M. The thesis centered on AI training demand. The position was sized below $2M due to high beta triggering the $1.5M limit."
+Ask the Knowledge Agent "What did we decide about NVIDIA?" and it calls list\_files(), finds nvda\_2025\_q3\_buy.md, calls read\_file(), and synthesizes: "Our last NVIDIA memo recommended BUY at $1.5M. The thesis centered on AI training demand. The position was sized below $2M due to high beta triggering the $1.5M limit."
 
 The full memo, in context. Not vector fragments reassembled into something that sounds right but misses the connections.
 
 The principle: Where knowledge lives determines how reliably agents use it. Critical rules go in the prompt. Large corpora go in RAG. Structured documents get browsed as files.
 
-## Institutional Learning
+# Institutional Learning
 
 Knowledge tells agents what they know. Learning tells them what they've discovered.
 
@@ -328,36 +368,46 @@ What gets learned:
 
 The difference in practice:
 
-**Session 1:** "Analyze NVIDIA." The committee produces a thorough analysis and recommends BUY at $1.5M, constrained by high-beta policy. The Risk Officer saves a learning about the beta constraint. The Financial Analyst saves a learning about data center revenue concentration.
+Session 1: "Analyze NVIDIA." The committee produces a thorough analysis and recommends BUY at $1.5M, constrained by high-beta policy. The Risk Officer saves a learning about the beta constraint. The Financial Analyst saves a learning about data center revenue concentration.
 
-**Session 2:** "Analyze NVIDIA." Before pulling YFinance data, the agents search learnings and find: the beta constraint, the revenue segment insight, the sector cap interaction. The analysis starts further ahead. It doesn't repeat the same discovery process. It builds on what the committee already knows.
+Session 2: "Analyze NVIDIA." Before pulling YFinance data, the agents search learnings and find: the beta constraint, the revenue segment insight, the sector cap interaction. The analysis starts further ahead. It doesn't repeat the same discovery process. It builds on what the committee already knows.
 
 This is what turns a collection of agents into an institution: an organization that accumulates wisdom over time.
 
 Not every agent needs learning. The Memo Writer synthesizes; it doesn't discover patterns. The Knowledge Agent retrieves; it doesn't analyze. Only the four active analysts have LearningMachine configured.
 
-## Try It
+# Try It
 
-The full implementation is open source. Here is the repo.
+The full implementation is open source. Here is the 
 
-Seven agents, four teams, one workflow, three-layer knowledge, institutional learning, all built with Agno.
+[repo](https://github.com/agno-agi/investment-committee)
 
-```shell
+.
+
+Seven agents, four teams, one workflow, three-layer knowledge, institutional learning, all built with 
+
+[Agno](https://github.com/agno-agi/agno)
+
+.
+
+shell
+
+```
 # Clone repo and add env vars
-git clone https://github.com/agno-agi/investment-committee.git investment-committee
-cd investment-committee
+> git clone https://github.com/agno-agi/investment-committee.git investment-committee
+> cd investment-committee
 
-cp example.env .env
+> cp example.env .env
 # Edit .env and add your API keys
 # ANTHROPIC_API_KEY=sk-ant-***
 # OPENAI_API_KEY=sk-***
 # EXA_API_KEY=*** # Optional -- Exa MCP is free (thank you!)
 
 # Start services
-docker compose up -d --build
+> docker compose up -d --build
 
 # Load research into the knowledge base
-docker exec -it aic-api python -m app.load_knowledge
+> docker exec -it aic-api python -m app.load_knowledge
 ```
 
 Prompts to try:
@@ -373,17 +423,15 @@ The patterns here extend well beyond finance. Any domain where you need speciali
 
 The architecture you choose shapes the intelligence. Choose wisely.
 
-## References
+References
 
-- Agno Github
-- Agno Docs
-- Teams & Modes
-- Workflows
-- Learning Machines
+- [Agno Github](https://github.com/agno-agi/agno)
+- [Agno Docs](https://docs.agno.com/)
+- [Teams & Modes](https://docs.agno.com/teams)
+- [Workflows](https://docs.agno.com/workflows)
+- [Learning Machines](https://docs.agno.com/learning)
 
 This is a technical demonstration, not financial advice. Don't make investment decisions based on an AI agent's recommendations.
-
-Ashpreet Bedi
 
 ---
 

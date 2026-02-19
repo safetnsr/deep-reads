@@ -15,6 +15,9 @@ this isn't a bookmarks folder. it's how we sharpen our thinking by engaging deep
 ### [@ashpreetbedi](/@ashpreetbedi) — founder of agno (multi-agent runtime)
 17 articles. better writer than most AI founders. best idea: not everything belongs in a vector store (3-layer knowledge pattern). worst habit: the same demo repeated in 6 articles. the investment committee piece is genuinely excellent. the "agno is a programming language" piece is peak overreach. [full analysis →](/@ashpreetbedi/README.md)
 
+### [@manthanguptaa](/@manthanguptaa) — software engineer, technical writer
+10 articles. an educator, not a salesman. reverse-engineers systems better than their own docs — his OpenClaw memory analysis is clearer than the official documentation. the tokenization deep dive is one of the best technical explainers on AI twitter. doesn't build original systems yet, but explains other people's exceptionally well. [full analysis →](/@manthanguptaa/README.md)
+
 ## format
 
 articles are converted to markdown with metadata (author, date, original url, images). full original text, nothing edited or summarized.

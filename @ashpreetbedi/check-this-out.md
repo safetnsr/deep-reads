@@ -7,17 +7,25 @@
 
 ---
 
-Check this out
+Agents are changing how we work. For most people this is still a prediction, but for me it's reality.
+
+I do spec-first development: claude-code (and my homegrown gcode) writes the specs, then writes 100% of the code. Agents keep specs and code in sync, and use the same apps I use. I haven't touched Linear in weeks.
+
+But something's been bugging me: new sessions don't have continuity. I have to provide the same context over and over. My workaround is a massive collection of prompts for each project but that's getting tedious to maintain.
+
+Skills, MCP - I've tried it all. Memory doesn't fix it either. The agent can remember that I live in New York. But that doesn't teach it how I build? How I test, debug and think through problems?
+
+## Check this out
 
 I've been testing a prototype with my team for a few days, here's a sample session:
 
-**Session 1** — an engineer tells the agent:
+Session 1 — an engineer tells the agent:
 
 > "We're trying to cut down on egress costs. Any ideas?"
 
 The agent saves that the team is working on cutting egress costs.
 
-**Session 2** — a different engineer, different conversation, asks:
+Session 2 — a different engineer, different conversation, asks:
 
 > "I'm deciding between datadog and grafana. Any recommendations?"
 
@@ -27,9 +35,9 @@ One person taught the agent something. Another person on the team benefited from
 
 If you're on a team of people working with agents all day, you know how crazy this is. When one person figures out how to test a tricky feature or shares an insight, everyone benefits automatically. The knowledge compounds.
 
-If Agents are the future then cross-user, cross-session knowledge continuity is a must.
+> If Agents are the future then cross-user, cross-session knowledge continuity is a must.
 
-## We've been asking the wrong question
+# We've been asking the wrong question
 
 I kept trying to solve the memory problem. Better extraction. Smarter retrieval. More context. It felt like tightening a screw with a hammer.
 
@@ -43,13 +51,10 @@ This might seem like wordplay but the change in perspective yields a fundamental
 
 Agents can now learn! Every interaction makes them sharper.
 
-## Learning Machines
+# Learning Machines
 
-```
-Agent = LLM + Tools + Instructions
-
-Learning Machine = Agent + Learning Stores
-```
+- Agent = LLM + Tools + Instructions
+- Learning Machine = Agent + Learning Stores
 
 Learning stores run in the background and capture different types of knowledge, picking stuff up that can be helpful in future runs.
 
@@ -57,11 +62,13 @@ But here's the breakthrough: they're extensible by design. You can build custom 
 
 For me, when I'm coding, I want my agent to learn where the source code for a feature lives. Where the testing cookbooks are. How to run the tests. Which environment to use. When the agent learns how to test my feature, everyone on the team should benefit from it.
 
-## How It Works
+# How It Works
 
 Here's how you turn an agent into a Learning Machine:
 
-```python
+python
+
+```
 from agno.agent import Agent
 from agno.db.postgres import PostgresDb
 from agno.learn import LearningMachine, LearnedKnowledgeConfig, LearningMode
@@ -80,13 +87,15 @@ agent = Agent(
 
 That's it. Your agent can capture insights, patterns and know-how from your interactions, it has tools to save learnings and search them later.
 
-## The protocol
+# The protocol
 
 The default stores handle generic knowledge. But what if I need my agent to learn project-specific stuff: where the source code lives, how to run tests, which environment to use.
 
 Solution: Built your own Learning Store:
 
-```python
+python
+
+```
 from agno.learn import LearningStore
 
 class ProjectContext(LearningStore):
@@ -126,7 +135,7 @@ Now every nudge I give the agent gets extracted and available next run. This is 
 
 The default stores get you started. Custom stores teach your agent anything.
 
-## Where this goes
+# Where this goes
 
 This is Phase 1. It works. Let's see how far we can push this.
 
@@ -140,13 +149,19 @@ Here's what I do know: the most valuable learning stores don't exist yet. And th
 
 My bet's not that we built the right stores, but that we built the right protocol for others to build theirs.
 
-If you're interested, checkout the cookbooks on Github.
+If you're interested, checkout the 
+
+[cookbooks](https://agno.link/learning)
+
+ on Github.
 
 Build something. Break something. Tell me what's missing.
 
-Learning Machines is part of Agno, the multi-agent runtime.
+Learning Machines is part of 
 
-Ashpreet Bedi
+[Agno](https://agno.link/gh)
+
+, the multi-agent runtime.
 
 ---
 

@@ -7,7 +7,11 @@
 
 ---
 
-The Path to Production
+A year ago I introduced Agno, a paved path for building agents without reinventing the wheel. Thousands of teams build with Agno, from startups to Fortune 5. Today, that paved path becomes a runway for takeoff.
+
+Introducing AgentOS: the missing runtime for multi-agent systems.
+
+# The Path to Production
 
 We have the infrastructure: inference, hosting, databases, vector stores. We have frameworks for building agents: orchestration, context engineering, memory, knowledge.
 
@@ -17,12 +21,17 @@ Every week I meet another team that burned six months building runtime infrastru
 
 Tutorials end with a notebook. Production is left as an exercise for the reader.
 
+[![Image](https://pbs.twimg.com/media/G_NDbwbXMAASoLd?format=jpg&name=small)](/ashpreetbedi/article/2014037319892762778/media/2014027602499940352)
+
 This is why 80%+ of agent projects never ship.
-## Introducing AgentOS
+
+# Introducing AgentOS
 
 AgentOS turns your agents into a production service you can deploy anywhere.
 
-```python
+python
+
+```
 from agno.agent import Agent
 from agno.db.postgres import PostgresDb
 from agno.models.anthropic import Claude
@@ -45,34 +54,34 @@ if __name__ == "__main__":
 ```
 
 Give it your agents and you get:
-50+ API endpoints with SSE-compatible streaming.
 
-Sessions, memory, knowledge and context stored in your database.
-
-Request-level isolation. No state bleed between users or agents.
-JWT-based RBAC with hierarchical scopes. Enterprise-grade security.
-
-Tracing built-in, stored in your database. No third-party tools required.
-
-Guardrails, human in the loop, learning machines; everything you need.
+- 50+ API endpoints with SSE-compatible streaming.
+- Sessions, memory, knowledge and context stored in your database.
+- Request-level isolation. No state bleed between users or agents.
+- JWT-based RBAC with hierarchical scopes. Enterprise-grade security.
+- Tracing built-in, stored in your database. No third-party tools required.
+- Guardrails, human in the loop, learning machines; everything you need.
 
 The runtime that takes teams 3-6 months, live on day one.
 
-## Day Two and Beyond
+# Day Two and Beyond
 
 Day one, you ship. Day two, you operate.
 
-Tracing isn't enough. You need to interact with live agents. Manage memory and knowledge. Run live evaluations. See metrics in real-time. Know what your users are seeing.  You need system monitoring, not just observability.
+Tracing isn't enough. You need to interact with live agents. Manage memory and knowledge. Run live evaluations. See metrics in real-time. Know what your users are seeing. You need system monitoring, not just observability.
 
 AgentOS comes with a built-in control plane that connects directly to your runtime:
 
-### AgentOS Control Plane
+[![](https://pbs.twimg.com/amplify_video_thumb/2014030759527329792/img/SqimBKw-U1CtcsRb.jpg)](blob:https://x.com/e7f676cd-36bb-4f53-a8ec-9d39bda69c9a)
+
+0:01 / 0:52
+
+AgentOS Control Plane
 
 Chat with live agents. Monitor sessions in real-time. Debug with full traces. Manage memories, knowledge, and permissions.
-
 The control plane connects from your browser directly to your runtime, using the same API endpoints you use to build your product. Agno has no access to your data.
 
-## Your Cloud. Your Data.
+# Your Cloud. Your Data.
 
 Most AI tooling has an architecture problem: your data lives on their servers.
 
@@ -82,13 +91,15 @@ AgentOS is built different.
 
 Everything runs in your infrastructure. Your agents in your cloud. Your data in your database. Sessions, memory, knowledge, traces. All of it lives with you.
 
+[![Image](https://pbs.twimg.com/media/G_NHTZXXkAEaWPo?format=jpg&name=small)](/ashpreetbedi/article/2014037319892762778/media/2014031856916729857)
+
 AgentOS runs in your cloud. You own your data.
 
 The control plane connects from your browser to your runtime. When you close the tab, there's no trace of your data anywhere but your own systems.
 
 This is a better architecture, designed for privacy, security, and control.
 
-## Who's Building With AgentOS
+# Who's Building With AgentOS
 
 The largest healthcare company in the US. The largest alternative asset manager in the world. Fortune 500s and two-person teams.
 
@@ -96,13 +107,17 @@ Healthcare and finance love it. When data can't leave the building, architecture
 
 One team went from four months stuck on infrastructure to production in three weeks. They stopped building infrastructure and started shipping products.
 
-## The Runway is Ready
+# The Runway is Ready
 
 We built the runtime so your product can take off.
 
-Get started: GitHub | Quickstart
+Get started: 
 
-Ashpreet Bedi
+[GitHub](https://github.com/agno-agi/agno)
+
+ | 
+
+[Quickstart](https://docs.agno.com/get-started/quickstart)
 
 ---
 

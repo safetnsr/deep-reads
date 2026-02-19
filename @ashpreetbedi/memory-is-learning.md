@@ -7,7 +7,33 @@
 
 ---
 
-Memory is Learning
+Every AI memory tool I've used is missing something.
+
+After reading hundreds (maybe thousands) of papers, posts, and opinions on agentic memory, I've come to three conclusions.
+
+1. No one's figured it out.
+
+Claude has the most impressive memory system I've used. It feels natural. It never shouts. It knows what to reveal and when.
+
+But we haven't figured out how to give developers the same capability for their own agents. The tools we have are... not there.
+
+2. Maybe we're looking at it wrong.
+
+Maybe memory is the wrong framing. What we're really doing is learning.
+
+Everyone's rushing to build memory extraction systems - pull out facts, store them in a vector (or graph 🙄) database, retrieve them using complex mechanisms. But that's only part of the problem.
+
+The hard part is integration: When does the learning happen? Before the response? After? In parallel? Is it automatic or does the agent control it? And critically - how do you teach the agent to use that information properly? Integration is what makes the system feel natural.
+
+You can't just tell an agent "you know XYZ about the user". You need to teach it how to use that knowledge. How to learn from it. How to prioritize it. How to act like a partner, a colleague, a companion who genuinely knows you -- not a machine reciting facts from a database.
+
+3. User memory is only part of the story.
+
+User profiles and conversation summaries are just two types of learnings. But what about patterns and insights that worked? The entities involved - companies, people, projects? The decisions made and why? The feedback received? How should the agent use all these learnings to improve itself?
+
+These aren't separate systems. They're all forms of learning.
+
+# Memory is Learning
 
 This realization led me to build something different.
 
@@ -15,36 +41,31 @@ The Learning Machine: a unified learning system that helps agents continuously i
 
 Here's the difference:
 
-**Traditional "Memory":**
-
 ```
+Traditional "Memory":
 Message → Extract → Store → Retrieve → Dump into Prompt → Repeat
-```
 
-**Learning Machine:**
-
-```
+Learning Machine:
 User Message ──────► Recall from Stores ◄────────┐
-│                    │
-▼                    │
-Build Context              │
-│                    │
-▼                    │ LearningMachine
-
-Agent Responds (with tools)      │
-│                    │
-▼                    │
-Extract & Process             │
-│                    │
-▼                    │
-Update Stores (agent learns) ──────┴──► Periodic Curation
+                            │                    │
+                            ▼                    │
+                      Build Context              │
+                            │                    │
+                            ▼                    │ LearningMachine
+                Agent Responds (with tools)      │
+                            │                    │
+                            ▼                    │
+                   Extract & Process             │
+                            │                    │
+                            ▼                    │
+              Update Stores (agent learns) ──────┴──► Periodic Curation
 ```
 
 The agent isn't just fed memories. It participates in learning, curating what it learns, and integrating that knowledge back into every response.
 
 The goal: an agent on interaction 1000 is fundamentally better than it was on interaction 1 -- across the board, not just with the same user.
 
-## What It Looks Like in Action
+# What It Looks Like in Action
 
 A new employee on their first day asks: "I'm starting work on the cloud migration project. What should I know?"
 
@@ -52,52 +73,59 @@ The agent responds with full context, even though it's never talked to this pers
 
 How? Three types of learning from past interactions:
 
-**Session 1 (Alex, CTO):**
+```
+Session 1 (Alex, CTO):
+"I'm Alex, CTO at Acme. We're migrating from AWS to GCP and
+I need help planning the timeline."
 
-> "I'm Alex, CTO at Acme. We're migrating from AWS to GCP and I need help planning the timeline."
+→ User Profile captures: Alex, CTO, involved in planning discussions
+→ Entity Memory captures: Acme (company), AWS→GCP migration (project)
+→ Session Context: Goal is migration timeline planning
+```
 
-- → User Profile captures: Alex, CTO, involved in planning discussions
-- → Entity Memory captures: Acme (company), AWS→GCP migration (project)
-- → Session Context: Goal is migration timeline planning
+```
+Session 2 (next day, same user, different session):
+"Just heard GCP is changing their pricing next quarter.
+How does that affect our migration?"
 
-**Session 2 (next day, same user, different session):**
+→ Agent recalls: Acme, AWS→GCP migration, Alex is CTO, 3-phase timeline
+→ Agent responds: "That could impact your timeline. Last time we mapped out a 3-phase approach with Phase 2 being the most compute-heavy. Want me to model the cost implications for each phase?"
+```
 
-> "Just heard GCP is changing their pricing next quarter. How does that affect our migration?"
+```
+Session 3 (different user, same org namespace):
+"I just joined to help with the Acme cloud project. What should I know?"
 
-- → Agent recalls: Acme, AWS→GCP migration, Alex is CTO, 3-phase timeline
-- → Agent responds: "That could impact your timeline. Last time we mapped out a 3-phase approach with Phase 2 being the most compute-heavy. Want me to model the cost implications for each phase?"
-
-**Session 3 (different user, same org namespace):**
-
-> "I just joined to help with the Acme cloud project. What should I know?"
-
-- → Entity Memory: "Acme is migrating AWS to GCP. Alex (CTO) is leading it."
-- → Learned Knowledge: Shares migration patterns from past projects
-- → Agent responds with full context -- even though it never talked to this user
+→ Entity Memory: "Acme is migrating AWS to GCP. Alex (CTO) is leading it."
+→ Learned Knowledge: Shares migration patterns from past projects
+→ Agent responds with full context -- even though it never talked to this user
+```
 
 Three sessions. Three types of learning. Cross-user knowledge sharing.
 
 This is possible. Today.
 
-## The Architecture: Learning Stores
+# The Architecture: Learning Stores
 
 The key innovation behind the Learning Machine is the learning protocol and learning stores. The protocol defines how stores capture, process, and integrate knowledge. Each store is configured independently, mix and match as needed. The Learning Machine orchestrates it all.
 
 These are the stores I'm currently working on:
 
-- **User Profile:** Preferences, memories, personal context
-- **Session Context:** Goal, plan, progress, summary
-- **Entity Memory:** Facts, events, relationships
-- **Learned Knowledge:** Insights, patterns, best practices
-- **Decision Logs:** Why decisions were made
-- **Behavioral Feedback:** What worked, what didn't
-- **Self-Improvement:** Evolving instructions
+- User Profile: Preferences, memories, personal context
+- Session Context: Goal, plan, progress, summary
+- Entity Memory: Facts, events, relationships
+- Learned Knowledge: Insights, patterns, best practices
+- Decision Logs: Why decisions were made
+- Behavioral Feedback: What worked, what didn't
+- Self-Improvement: Evolving instructions
 
 ## Show Me Some Code
 
 One agent. Four learning stores. Configured independently. Orchestrated by the Learning Machine.
 
-```python
+python
+
+```
 from agno.agent import Agent
 from agno.db.postgres import PostgresDb
 from agno.models.openai import OpenAIResponses
@@ -126,7 +154,7 @@ agent = Agent(
 
 The best part? You can build custom learning stores by extending the LearningStore protocol. Need project context? Build a ProjectContextStore. Need to track accounts? Build an AccountStore.
 
-## Taking Inspiration from Claude
+# Taking Inspiration from Claude
 
 Claude's memory feels magical. It's natural, contextual, never announces "saving to memory". It just knows you.
 
@@ -134,15 +162,15 @@ But here's the thing: you can't build with it. Claude's memory is a consumer pro
 
 Here's what Claude does well, and what Learning Machine adds:
 
-- **Claude feels natural.** It never announces "saving to memory". So does Learning Machine. We inject context based on each store and control how the agent learns from it. No fact dumps.
-- **Claude learns about its users over time.** Preferences, history, personal context. So does Learning Machine. But we also add sessions, entities, patterns, and decisions. The full picture, not just the user.
-- **Claude is scoped to a single user.** Makes sense for a consumer product. Learning Machine adds namespace scoping: keep it private to a user, share across a team, or make it global. You control the boundaries.
-- **Claude has a fixed memory type.** You can't change how it works. Learning Machine is extensible via protocol. Build your own stores for whatever your domain needs.
-- **Claude is a closed system.** Its memory lives inside Claude. Learning Machine is open source, fully customizable, and yours to extend.
+- Claude feels natural. It never announces "saving to memory". So does Learning Machine. We inject context based on each store and control how the agent learns from it. No fact dumps.
+- Claude learns about its users over time. Preferences, history, personal context. So does Learning Machine. But we also add sessions, entities, patterns, and decisions. The full picture, not just the user.
+- Claude is scoped to a single user. Makes sense for a consumer product. Learning Machine adds namespace scoping: keep it private to a user, share across a team, or make it global. You control the boundaries.
+- Claude has a fixed memory type. You can't change how it works. Learning Machine is extensible via protocol. Build your own stores for whatever your domain needs.
+- Claude is a closed system. Its memory lives inside Claude. Learning Machine is open source, fully customizable, and yours to extend.
 
 I studied what makes Claude's memory great. Then built something we can actually use and extend.
 
-## What This Unlocks
+# What This Unlocks
 
 Here's what's possible when agents learn across users, sessions, and time:
 
@@ -154,21 +182,25 @@ Here's what's possible when agents learn across users, sessions, and time:
 
 That last one is the endgame. Agents that learn from their mistakes and rewrite their instructions. Human approves. Agent evolves.
 
-## Current status and what's next?
+# Current status and what's next?
 
-Learning Machine is a part of Agno and I'm testing Phase 1. Here's where things stand:
+Learning Machine is a part of 
 
-- **Phase 1:** User Profile, Session Context, Entity Memory, Learned Knowledge -- built, testing now
-- **Phase 2:** Decision Logs, Behavioral Feedback -- planned
-- **Phase 3:** Self-Improvement -- planned
+[Agno](https://github.com/agno-agi/agno)
 
-If you're eager to dig in, here's the PR: learning-machine-v0
+ and I'm testing Phase 1. Here's where things stand:
+
+- Phase 1: User Profile, Session Context, Entity Memory, Learned Knowledge -- built, testing now
+- Phase 2: Decision Logs, Behavioral Feedback -- planned
+- Phase 3: Self-Improvement -- planned
+
+If you're eager to dig in, here's the PR: 
+
+[learning-machine-v0](https://github.com/agno-agi/agno/pull/5897)
 
 Want to get involved? DM me
 
 Memory was never the goal. Learning was.
-
-Ashpreet Bedi
 
 ---
 

@@ -7,7 +7,17 @@
 
 ---
 
-The architecture stays the same
+Every time you interact with technology, a program runs in a datacenter far away.
+
+Every app you use (social media, banking, food delivery) is a collection of programs working together. Every tap, every click, every swipe triggers a chain of small programs that accomplish a task.
+
+Until 2025, programs - and by extension, software - was mostly static. Every path was written in advance by a developer. Every behavior is predetermined. The program doesn't decide anything, it just executes.
+
+Agents flip that.
+
+An agent doesn't follow a script. It reasons. It takes an input, considers context, and decides what to do. It can call tools, look up data, remember past interactions, and choose between multiple paths that no developer explicitly wrote. It's still a program, but the path between input and output is no longer predetermined and this changes how software is built.
+
+# The architecture stays the same
 
 Here's what most people miss about the "AI revolution": the fundamental software architecture will not change.
 
@@ -15,7 +25,7 @@ We'll still have a client - the mobile app, web app, or desktop app - talking to
 
 But while the architecture stays the same, how work gets done on the backend is changing completely.
 
-The static backend is becoming agentic
+# The static backend is becoming agentic
 
 Two things change when software goes from static to agentic.
 
@@ -25,7 +35,7 @@ The second is the backend. The static programs behind your API endpoints, the on
 
 Not only that, the UI becoming agentic is entirely dependent on the backend becoming agentic. The interface can only be as intelligent as the system powering it. So the real shift, the one everything else depends on, is this new programming model - agents.
 
-When software makes decisions
+# When software makes decisions
 
 When the backend was static, every decision was made by a developer in advance. If the user clicks this, do that. If the balance is below zero, reject the transaction. Every path was written. The program just followed the script.
 
@@ -41,7 +51,7 @@ This is a problem the static backend never had. Static programs don't make decis
 
 And that system doesn't exist in the old world. You have to build it.
 
-The Runtime Problem
+# The Runtime Problem
 
 When programs were static, the runtime wasn't something you thought about. Your backend was a web server running API endpoints. A request came in, a program executed, a response went out. Fast, predictable, done. The infrastructure was mature. Most problems were solved decades ago.
 
@@ -53,7 +63,7 @@ And because agents make decisions, the runtime takes on a responsibility that st
 
 This is more than an infrastructure problem. It's a philosophical one. The runtime is no longer just the thing that runs your code. It's the thing that runs your programs - programs that think, remember, and decide - and it has to be built for that from the ground up.
 
-The New Software
+# The New Software
 
 Software has always been a collection of programs. That hasn't changed. What's changing is the type of programs that make up software.
 
@@ -66,8 +76,6 @@ The programs behind your favorite products are starting to reason, remember, and
 These are the problems worth solving. These are the problems that will define the next generation of software.
 
 Agents are the new programs.
-
-Ashpreet Bedi
 
 ---
 
