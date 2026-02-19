@@ -30,9 +30,13 @@ If you're on a team of people working with agents all day, you know how crazy th
 If Agents are the future then cross-user, cross-session knowledge continuity is a must.
 
 ## We've been asking the wrong question
+
 I kept trying to solve the memory problem. Better extraction. Smarter retrieval. More context. It felt like tightening a screw with a hammer.
+
 Then it clicked.
+
 I was asking "what should the agent remember?" and instead should have asked "what should the agent learn?"
+
 Memory is a noun. Learning is a verb.
 
 This might seem like wordplay but the change in perspective yields a fundamental shift. Memory is static: a database of facts about the user. Learning is dynamic: it evolves, compounds, gets sharper and has a purpose.
@@ -45,6 +49,7 @@ Agents can now learn! Every interaction makes them sharper.
 Agent = LLM + Tools + Instructions
 Learning Machine = Agent + Learning Stores
 ```
+
 Learning stores run in the background and capture different types of knowledge, picking stuff up that can be helpful in future runs.
 
 But here's the breakthrough: they're extensible by design. You can build custom stores for your domain, workflow and weird specific way of doing things.
@@ -121,6 +126,7 @@ Now every nudge I give the agent gets extracted and available next run. This is 
 The default stores get you started. Custom stores teach your agent anything.
 
 ## Where this goes
+
 This is Phase 1. It works. Let's see how far we can push this.
 
 Phase 2 adds decision logging - agents that learn from what happened.

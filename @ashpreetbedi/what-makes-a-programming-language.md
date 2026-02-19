@@ -95,6 +95,7 @@ These are not helper utilities or 3rd party integrations. They're the vocabulary
 This is what a programming language does. It gives you the right primitives for the era you are building in. You define the behavior. The language enforces it.
 
 ## Every era gets the language it needs
+
 COBOL abstracted business logic away from assembly. C abstracted system engineering without hiding it. Python abstracted memory management and low level system primitives to accelerate iteration.
 Each language captured the dominant abstraction of its era.
 The agentic era introduces a new abstraction: systems that reason, remember, and decide at runtime.

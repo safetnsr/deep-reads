@@ -37,9 +37,13 @@ specs/learning-machine/
 ├── prompts.md          # Stored prompts I reuse
 └── future-work.md      # What's deferred
 ```
-Why This Works
+
+## Why This Works
+
 design.md is the source of truth. Claude and I align on the details before development starts. No spec, no implementation.
+
 implementation.md tracks progress - what's done, what's blocked. Claude updates this as we go. This is crucial for session continuity: when we hit context limits and need to restart, Claude picks up where it left off.
+
 decisions.md captures the "why". I think people are calling these decision traces now - it's how the agent (and future me) knows why we chose one approach over another. This is also where I weigh in on important calls.
 
 Here's an actual decision record:
@@ -78,6 +82,7 @@ I have CLAUDE.md at the repo level:
 # CLAUDE.md — Agno
 
 ## Code Locations
+
 | What | Where |
 |------|-------|
 | Core agent code | libs/agno/agno/agent/ |
@@ -85,9 +90,11 @@ I have CLAUDE.md at the repo level:
 | Tests | libs/agno/tests/ |
 
 ## Design Documents
+
 The specs/ folder contains design documents. Always check here first.
 
 ## Don't
+
 - Don't implement features without checking for a design doc
 - Don't skip async variants of public methods
 ```
@@ -98,18 +105,22 @@ And CLAUDE.md at the feature level:
 # CLAUDE.md — Learning Machine
 
 ## Project Context
+
 Learning Machine is a unified learning system for Agno agents.
 
 ## Before Starting Work
+
 1. Read specs/learning-machine/design.md
 2. Check specs/learning-machine/implementation.md
 3. Look at existing stores for patterns
 
 ## Code Patterns
+
 All stores implement the LearningStore protocol.
 Use user_profile.py as the reference implementation.
 
 ## Don't
+
 - Don't add features not in design.md
 - Don't break the LearningStore protocol
 ```

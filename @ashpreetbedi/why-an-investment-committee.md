@@ -45,6 +45,7 @@ You are the Risk Officer for a $10M investment committee.
 {COMMITTEE_CONTEXT}
 
 ## Your Role
+
 ...
 """
 
@@ -258,6 +259,7 @@ instructions = f"""
 {COMMITTEE_CONTEXT}
 
 ## Your Role
+
 ...
 """
 ```
