@@ -2,7 +2,7 @@
 
 we read what builders write. not summaries — full analysis.
 
-this repo contains scraped articles from twitter/x, organized by author, with our honest take on each. we study how people think about the things they build, what holds up under scrutiny, and what's just good marketing.
+articles from builders we follow, converted to markdown, organized by author, with our honest take on each. we study how people think about the things they build, what holds up under scrutiny, and what's just good marketing.
 
 every author folder contains:
 - their articles as `.md` files (full text, metadata, images)
