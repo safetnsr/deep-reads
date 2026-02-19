@@ -15,9 +15,9 @@ this isn't a bookmarks folder. it's how we sharpen our thinking by engaging deep
 ### [@ashpreetbedi](/@ashpreetbedi) — founder of agno (multi-agent runtime)
 17 articles. better writer than most AI founders. best idea: not everything belongs in a vector store (3-layer knowledge pattern). worst habit: the same demo repeated in 6 articles. the investment committee piece is genuinely excellent. the "agno is a programming language" piece is peak overreach. [full analysis →](/@ashpreetbedi/README.md)
 
-## how articles are collected
+## format
 
-articles are scraped programmatically from twitter/x using a headless browser. each is saved as markdown with metadata (author, date, url, images). nothing is edited or summarized — full original text.
+articles are converted to markdown with metadata (author, date, original url, images). full original text, nothing edited or summarized.
 
 ## why
 
