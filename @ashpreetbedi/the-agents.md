@@ -8,14 +8,19 @@
 ---
 
 The Agents
+
 We'll build three agents, each demonstrating a different pattern:
 Pal: AI-powered second brain. Captures notes, bookmarks, people, meetings. Researches the web. Learns over time.
+
 Knowledge Agent: Answers questions from a knowledge base.
 MCP Agent - Connects to external services via Model Context Protocol.
+
 Each agent can be extended to fit your needs.
+
 Run Locally (5 minutes)
 Prerequisites:
 Install Docker
+
 Get an OpenAI API key
 ## Setup
 
@@ -42,7 +47,9 @@ That's it. Your system is running.
 ## Connect to the UI
 
 Open os.agno.com
+
 Click Add OS → Local
+
 Enter `http://localhost:8000` as the URL
 
 Now chat with Pal:
@@ -73,13 +80,18 @@ railway login
 ./scripts/railway_up.sh
 ```
 The script provisions PostgreSQL, configures environment variables, and deploys your system. Give it a few minutes for the services to spin up.
+
 Connect to the UI
 Open os.agno.com
+
 Click Add OS → Live
+
 Enter your Railway domain
+
 You now have a production multi-agent system. Watch it go live in ~2 mins:
 0:01 / 1:15
 What's Included
+
 Pal (Personal Agent that Learns)
 Your AI-powered second brain. Captures notes, bookmarks, people, meetings. Researches the web and saves findings. Learns from errors so it doesn't repeat them. I wrote more about Pal here:
 Ashpreet Bedi

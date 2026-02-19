@@ -8,13 +8,20 @@
 ---
 
 What Learning Isn't
+
 Before we talk about learning, let's clear up what doesn't count.
+
 Session history isn't learning. It's a transcript that gets thrown away when the session ends. Useful for context within a conversation. Useless across conversations.
 RAG isn't learning. RAG is retrieval. You loaded static documents. The agent can search them, but it didn't discover anything. It's not getting smarter.
+
 Fine-tuning isn't learning. Fine-tuning happens offline. Your agent can't learn while it's running. And you probably don't want to fine-tune on every conversation anyway.
+
 Memory is a noun. Learning is a verb. This might seem like wordplay, but the shift in perspective matters. Memory is static: a database of facts. Learning is dynamic: it evolves, compounds, gets sharper. Memory stores what you said. Learning figures out what it means.
+
 So what does actual runtime learning look like?
+
 An agent that remembers users across sessions. That captures insights from conversations. That learns from its own decisions and feedback. Where knowledge from one user can benefit another.
+
 That's what we built.
 
 ## Learning in Action
@@ -246,6 +253,7 @@ Your agents learn now.
 → GitHub
 
 Agno is an open-source framework for building agents that learn. Persistent storage, learning stores, and cross-user knowledge transfer. All built in.
+
 Ashpreet Bedi
 
 ---

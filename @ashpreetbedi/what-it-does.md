@@ -8,7 +8,9 @@
 ---
 
 What it does
+
 Pal is a personal agent that acts like a second brain.
+
 It captures notes, bookmarks, people, and meetings. It can research the web and save findings (thanks Exa for the free MCP). Then I can ask, “what do I know about X?” and it connects the dots.
 ## Capture
 
@@ -36,11 +38,15 @@ Of course let's ask it to retrieve and pull information:
 What do I know about event sourcing?
 ```
 What makes it different
+
 Pal learns. It’s not just storage and retrieval. It improves with every interaction.
+
 Pal has two storage systems (by design).
 - DuckDB stores your actual stuff: notes, bookmarks, people, meetings, projects.
 - A separate Learning System stores reusable knowledge: table schemas, research findings, error-fix patterns.
+
 Pal creates tables on the fly. It spins up DuckDB tables for notes, bookmarks, people, meetings, research, and whatever else you end up needing. Nothing is pre-defined. It builds on the fly (lol good luck).
+
 Pal learns continuously. It learns:
 - about you (your preferences, projects, and context)
 - from its errors (so it does not repeat the same mistakes)
@@ -73,6 +79,7 @@ docker compose up -d --build
 Connect to AgentOS and start chatting:
 
 Open os.agno.com
+
 Click "Add OS" → "Local"
 Enter `http://localhost:8000` in the URL
 
@@ -90,25 +97,39 @@ Give it a few minutes for services to spin up.
 Connect to control plane:
 
 Open os.agno.com
+
 Click "Add OS" → "Live"
 Enter your Railway domain
+
 Built with Agno. Research powered by @ExaAILabs free MCP server - web search, company lookup, and people search out of the box. Thanks Exa 🙏
 → GitHub repo with full code
+
 What’s next
+
 Not sure. Here’s what I’ll try next:
 Add Slack integration
+
 Add Gmail integration
+
 Pull context from Google Calendar
+
 Sync projects and tasks with Linear
+
 Add WhatsApp
+
 The goal is simple: dump information in whatever way is easiest, then retrieve it in whatever way is fastest.
 ⚠️ This is a work in progress ⚠️
 Please don't expect Pal to be perfect. I do not know if this is a weekend experiment or something i'll be using in 2 weeks. I just wanted to share what I am building.
+
 What I’m curious about:
 What would you want a second brain to remember?
+
 What integrations matter most? Slack, email, calendar, WhatsApp?
+
 How would you want to interact with it? Chat, voice, daily digests, reminders?
+
 Let me know. DMs open.
+
 Ashpreet Bedi
 
 ---

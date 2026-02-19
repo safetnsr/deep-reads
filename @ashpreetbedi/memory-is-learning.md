@@ -30,6 +30,7 @@ User Message ──────► Recall from Stores ◄───────�
 Build Context              │
 │                    │
 ▼                    │ LearningMachine
+
 Agent Responds (with tools)      │
 │                    │
 ▼                    │
@@ -166,6 +167,7 @@ If you're eager to dig in, here's the PR: learning-machine-v0
 Want to get involved? DM me
 
 Memory was never the goal. Learning was.
+
 Ashpreet Bedi
 
 ---

@@ -223,6 +223,7 @@ Learning customized to each domain is going to change the game.
 Want to dig in? Here's the PR: learning-machine-v0
 
 Memory was step one. Learning is what comes next.
+
 Ashpreet Bedi
 
 ---

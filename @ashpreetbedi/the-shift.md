@@ -8,15 +8,23 @@
 ---
 
 The Shift
+
 When you're using coding agents, you need to completely change how you work. Claude handles feature design, implementation, testing, and documentation. I just orchestrate.
+
 My new workflow:
 Designs in Notion → Designs in Markdown
+
 Humans write code → Claude writes code
+
 Humans write tests → Claude writes tests + cookbooks
+
 Humans review code → Claude reviews, human approves
+
 Context scattered → Context lives in code
 I define what to build and why. Claude handles how.
+
 Spec-First Development
+
 To use coding agents well, you need to give them the right context. I follow what I call spec-first development.
 I keep a private specs/ repository symlinked into Agno:
 
@@ -52,6 +60,7 @@ Here's an actual decision record:
 ## ADR-003: Learning Modes (ALWAYS, AGENTIC, PROPOSE)
 
 ### Context
+
 Different use cases need different learning behaviors.
 
 ### Options
@@ -59,6 +68,7 @@ Different use cases need different learning behaviors.
 2. Per-store modes — Each store can operate differently
 
 ### Decision
+
 Per-store LearningMode enum.
 
 ### Consequences
@@ -117,6 +127,7 @@ Learning Machine is a unified learning system for Agno agents.
 ## Code Patterns
 
 All stores implement the LearningStore protocol.
+
 Use user_profile.py as the reference implementation.
 
 ## Don't
@@ -198,6 +209,7 @@ I prefer to front-load information. Architecture decisions, edge cases, constrai
 ## Opus 4.5 is AGI
 
 When I say claude writes 100% of my code, I mean it. I still review every line. I'm just not the one typing.
+
 Ashpreet Bedi
 
 ---

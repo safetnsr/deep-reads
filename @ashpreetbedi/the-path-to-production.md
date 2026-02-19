@@ -8,10 +8,15 @@
 ---
 
 The Path to Production
+
 We have the infrastructure: inference, hosting, databases, vector stores. We have frameworks for building agents: orchestration, context engineering, memory, knowledge.
+
 Then we try to ship. And the path disappears.
+
 Every week I meet another team that burned six months building runtime infrastructure that has nothing to do with their product: API endpoints, session persistence, durable streaming, failure recovery, horizontal scaling.
+
 Tutorials end with a notebook. Production is left as an exercise for the reader.
+
 This is why 80%+ of agent projects never ship.
 ## Introducing AgentOS
 
@@ -41,11 +46,16 @@ if __name__ == "__main__":
 
 Give it your agents and you get:
 50+ API endpoints with SSE-compatible streaming.
+
 Sessions, memory, knowledge and context stored in your database.
+
 Request-level isolation. No state bleed between users or agents.
 JWT-based RBAC with hierarchical scopes. Enterprise-grade security.
+
 Tracing built-in, stored in your database. No third-party tools required.
+
 Guardrails, human in the loop, learning machines; everything you need.
+
 The runtime that takes teams 3-6 months, live on day one.
 
 ## Day Two and Beyond
@@ -91,6 +101,7 @@ One team went from four months stuck on infrastructure to production in three we
 We built the runtime so your product can take off.
 
 Get started: GitHub | Quickstart
+
 Ashpreet Bedi
 
 ---

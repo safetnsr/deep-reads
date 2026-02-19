@@ -8,25 +8,42 @@
 ---
 
 Why an Investment Committee
+
 An investment committee is one of the oldest multi-agent systems in the world. A group of specialists, each with different expertise, different tools, different blind spots, evaluating opportunities and making capital allocation decisions together.
+
 It maps naturally to what multi-agent systems should demonstrate:
 Specialization matters. A single analyst covering macro, fundamentals, technicals, and risk produces shallow work in every dimension. Separate agents with separate tools go deeper.
+
 Orchestration matters. Should the chair call on analysts one by one? Should everyone speak simultaneously? Should we run a fixed process? The answer depends on the question.
+
 Memory matters. A committee that starts from scratch every meeting is useless. A committee that remembers what it decided last quarter, what mistakes it made, what patterns it discovered: that's an institution.
+
 The system manages a $10M vehicle investing in US public equities. Every analysis runs against live market data. Every recommendation must comply with a real investment mandate with position limits, sector caps, and risk constraints. Nothing is simulated (except for the investments, of course).
+
 The Setup: 7 Agents, Real Data, Live Markets
+
 The committee runs against live financial data via YFinance (free) and Exa web search (their MCP is free). Every agent is a specialist:
 Market Analyst (Sonnet 4.6): Macro trends, sector analysis, breaking news. Tools: Exa MCP + YFinance.
+
 Financial Analyst (Sonnet 4.6): Fundamentals, valuation, balance sheets. Tools: YFinance.
+
 Technical Analyst (Sonnet 4.6): Price action, momentum, support/resistance levels. Tools: YFinance.
+
 Risk Officer (Sonnet 4.6): Downside scenarios, position sizing, mandate compliance. Tools: YFinance.
+
 Knowledge Agent (Sonnet 4.6): Memo archive + research library. Tools: FileTools / Vector Search.
+
 Memo Writer (Sonnet 4.6): Synthesizes analysis into formal investment memos. Tools: FileTools.
+
 Committee Chair (Opus 4.6): Final decisions, capital allocation.
 I'm using Yfinance and Exa via MCP because they're free.
+
 Real Gs should use paid options.
+
 Specialist analysts use Sonnet: fast, capable, cost-effective for focused analysis. The Chair uses Opus: better reasoning for synthesizing conflicting perspectives and making final calls.
+
 Every analyst shares two things. First, the committee's static context (mandate, risk policy, process rules) injected directly into their system prompt. Second, a shared learning base where they save and retrieve patterns across sessions.
+
 Here's the common structure:
 
 ```python
@@ -146,6 +163,7 @@ Ask "Deploy $1M across the top 5 AI stocks, no single position over 30%" and the
 
 ```
 Task 1: Market Analyst    → Identify top 5 AI stocks
+
 Task 2: Financial Analyst → Deep dive fundamentals       (depends on 1)
 Task 3: Technical Analyst → Entry timing analysis        (depends on 1)
 Task 4: Risk Officer      → Portfolio risk assessment    (depends on 2, 3)
@@ -278,10 +296,12 @@ Layer 3 is FileTools. The Knowledge Agent lists, searches, and reads memos as wh
 
 ```python
 # Knowledge Agent: read-only access to memo archive
+
 FileTools(base_dir=MEMOS_DIR, enable_read_file=True,
          enable_list_files=True, enable_search_files=True)
 
 # Memo Writer: also has write access to save new memos
+
 FileTools(base_dir=MEMOS_DIR, enable_save_file=True, ...)
 ```
 
@@ -362,6 +382,7 @@ The architecture you choose shapes the intelligence. Choose wisely.
 - Learning Machines
 
 This is a technical demonstration, not financial advice. Don't make investment decisions based on an AI agent's recommendations.
+
 Ashpreet Bedi
 
 ---

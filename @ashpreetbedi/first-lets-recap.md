@@ -53,6 +53,7 @@ class LearningStore(Protocol):
 ```
 
 Five functions. Everything else is optional.
+
 Why this matters: You can build your own learning store in ~50 lines. Most memory systems are thousands of lines of config. This is ~50. Legal docs. Medical records. Codebases. Sales pipelines. Whatever your domain needs.
 
 You can even build personalized LearningStores for your writing styles, for your daily to-do's, for your emails, for  your shopping lists. The real value of this approach is its extensibility.
@@ -68,6 +69,7 @@ User Message ──────► Recall from Stores ◄───────�
 Build Context              │
 │                    │
 ▼                    │ LearningMachine
+
 Agent Responds (with tools)      │
 │                    │
 ▼                    │
@@ -229,12 +231,15 @@ Some learnings should be private. Some should be shared. Namespaces enable this.
 
 ```python
 # Private to this user
+
 LearnedKnowledgeConfig(namespace="user")
 
 # Shared within engineering team
+
 LearnedKnowledgeConfig(namespace="engineering")
 
 # Shared with everyone
+
 LearnedKnowledgeConfig(namespace="global")
 ```
 
@@ -261,6 +266,7 @@ Phase 3: Self-Improvement. This is the endgame. Agents that analyze their own fa
 Want to dig in? Here's the PR: learning-machine-v0
 
 Memory was step one. Learning is what comes next.
+
 Ashpreet Bedi
 
 ---

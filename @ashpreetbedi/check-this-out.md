@@ -47,6 +47,7 @@ Agents can now learn! Every interaction makes them sharper.
 
 ```
 Agent = LLM + Tools + Instructions
+
 Learning Machine = Agent + Learning Stores
 ```
 
@@ -144,6 +145,7 @@ If you're interested, checkout the cookbooks on Github.
 Build something. Break something. Tell me what's missing.
 
 Learning Machines is part of Agno, the multi-agent runtime.
+
 Ashpreet Bedi
 
 ---

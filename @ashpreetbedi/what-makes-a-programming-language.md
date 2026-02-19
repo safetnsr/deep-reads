@@ -10,23 +10,39 @@
 What makes a programming language?
 A programming language gives you three things:
 Primitives to think and build with.
+
 An engine to execute those primitives.
 A runtime that governs memory, I/O, permissions, and interaction with the outside world.
+
 Python gives you lists, functions, classes. Its interpreter runs them. Its runtime manages memory, exceptions, and interfaces with the OS.
+
 React gives you components and state. Its reconciler computes updates. The browser handles rendering and events.
+
 Now apply this to agentic systems.
+
 Agno gives you agents, teams, workflows, memory, knowledge, tools, guardrails, and approval flows.
+
 The Engine runs them: model calls, tool execution, context management.
+
 AgentOS, the production runtime, enforces the contract: streaming, authentication, session isolation, monitoring, background execution.
+
 Agents are the new programs
+
 Every application today is a collection of programs working together. Every click triggers deterministic code. Every path was written in advance. The system does exactly what the developer specified.
+
 Agents change that.
+
 An agent reasons over context, it chooses tools dynamically, looks up data, retrieves memory, and decides which path to take at runtime.
+
 It's still software, but the path between input and output is no longer predetermined.
+
 For decades, the contract was simple:
 Same input, same output.
+
 Agentic software breaks this contract we've had with software for decades.
+
 Agentic software needs a new contract
+
 If execution is dynamic, the language must express that natively. Agentic software requires at least three new capabilities built into its core model.
 A new interaction model. Static software receives a request and returns a response. Agentic software streams reasoning, tool calls, intermediate results, and pivots in real time. The execution path can change mid run. The system may retrieve knowledge halfway through and completely redirect its reasoning.  Streaming and iteration are the default, and the language for agentic systems must treat them as first class behavior.
 A new governance model. Traditional systems execute predefined decisions and operate within rules written in advance. Code does not decide whether to send an email or issue a refund. It simply follows rules.
@@ -39,7 +55,9 @@ A new trust model. Static systems are designed to be predictable. You trust the 
 Agents introduce probabilistic reasoning into the execution path.
 
 The same prompt can produce different outputs depending on context, memory, and retrieval. Trust must therefore be engineered differently. Guardrails, evaluation, logging, and post response checks must be part of the execution model. They need to be built into the runtime semantics.
+
 Interaction. Governance. Trust.
+
 This is different from anything we expected from previous languages.
 ## What this looks like in practice
 
@@ -97,13 +115,21 @@ This is what a programming language does. It gives you the right primitives for 
 ## Every era gets the language it needs
 
 COBOL abstracted business logic away from assembly. C abstracted system engineering without hiding it. Python abstracted memory management and low level system primitives to accelerate iteration.
+
 Each language captured the dominant abstraction of its era.
+
 The agentic era introduces a new abstraction: systems that reason, remember, and decide at runtime.
+
 The contract has changed.
+
 The primitives have changed.
+
 The execution model has changed.
+
 The language must change too.
+
 That language is Agno.
+
 Ashpreet Bedi
 
 ---
