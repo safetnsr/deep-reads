@@ -15,13 +15,11 @@ Session history helps, your agent can remember what happened earlier in the conv
 The moment the session ends, it's gone. No memory. No improvement. No evolution.
 
 Think about what this means:
-User corrects the agent? Forgotten by next session.
 
-Agent makes the same mistake twice? No mechanism to prevent it.
-
-User shares preferences over months of usage? Starts fresh every time.
-
-Agent discovers a useful insight? Lost forever.
+- User corrects the agent? Forgotten by next session.
+- Agent makes the same mistake twice? No mechanism to prevent it.
+- User shares preferences over months of usage? Starts fresh every time.
+- Agent discovers a useful insight? Lost forever.
 
 Humans don't learn this way. And there's zero chance this is the final form of agents either.
 
@@ -39,20 +37,16 @@ Unprompted. No shared context. No explicit handoff.
 
 One person taught the agent something. Another person benefited. The knowledge transferred. This is what Agents 2.0 looks like.
 
-Agents 2.0
+## Agents 2.0
+
 Real learning means the agent on interaction 1000 behaves better than it did on interaction 1. This evolution is guided by six types of learning:
-User Memory. Preferences, context, communication style.
-"She prefers bullet points for executive summaries"
-Session Context. Goal, plan, progress.
-"Working on LearningMachine design, completed DX section"
-Entity Memory. Facts, events, relationships about external things.
-"Acme Corp: fintech, 50 employees, uses Postgres"
-Learned Knowledge. Insights, patterns, reusable facts.
-"Tech stocks typically trade at 20-35x P/E"
-Decision Logs. Why decisions were made, reasoning traces.
-"Approved 20% discount due to churn risk"
-Behavioral Feedback. What worked, what didn't, corrections.
-"Long responses to quick questions get thumbs down"
+
+- **User Memory.** Preferences, context, communication style. "She prefers bullet points for executive summaries"
+- **Session Context.** Goal, plan, progress. "Working on LearningMachine design, completed DX section"
+- **Entity Memory.** Facts, events, relationships about external things. "Acme Corp: fintech, 50 employees, uses Postgres"
+- **Learned Knowledge.** Insights, patterns, reusable facts. "Tech stocks typically trade at 20-35x P/E"
+- **Decision Logs.** Why decisions were made, reasoning traces. "Approved 20% discount due to churn risk"
+- **Behavioral Feedback.** What worked, what didn't, corrections. "Long responses to quick questions get thumbs down"
 Models are already capable of this. Agents 2.0 is an engineering problem, not an intelligence problem.
 
 Memory, knowledge bases, decision logs, feedback signals, persistent storage. The primitives exist. We just need to wire them together.

@@ -10,15 +10,12 @@
 What we want to build
 
 We want agents that:
-Continue conversations across sessions
 
-Remember user preferences, history, and context
-
-Get better by learning from every interaction
-
-Can be debugged when they fail
-
-Give us structured data to evaluate and improve
+- Continue conversations across sessions
+- Remember user preferences, history, and context
+- Get better by learning from every interaction
+- Can be debugged when they fail
+- Give us structured data to evaluate and improve
 
 None of this is possible without persistent state.
 

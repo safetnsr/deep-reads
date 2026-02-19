@@ -14,17 +14,13 @@ OpenAI's insight: context is everything. Without it, even strong models hallucin
 Another problem is that most Text-to-SQL agents are stateless, they make mistakes, you fix them, then they make the same mistake again because every session starts fresh.
 
 Dash fixes this by implementing 6 layers of context:
-Table Usage: schema, columns, relationships
 
-Human Annotations: metrics, definitions, gotchas
-
-Query Patterns: SQL that's known to work
-
-Institutional Knowledge: external docs, research
-
-Memory: error patterns, discovered fixes
-
-Runtime Context: live schema when things change
+- Table Usage: schema, columns, relationships
+- Human Annotations: metrics, definitions, gotchas
+- Query Patterns: SQL that's known to work
+- Institutional Knowledge: external docs, research
+- Memory: error patterns, discovered fixes
+- Runtime Context: live schema when things change
 
 The agent retrieves relevant context at runtime via hybrid search, uses this to generate grounded SQL, then uses the results to deliver insights.
 0:01 / 0:34

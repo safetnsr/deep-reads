@@ -43,13 +43,13 @@ Then write evals to lock in that understanding
 
 You can't evaluate what you can't run.
 
-What Evals Are Actually Good For
+## What Evals Are Actually Good For
+
 I'm not saying evals are useless. They're critical for model providers shipping foundation models. If you're training GPT-5, you need benchmarks. Even for AI engineers building products on top of those models, evals help with:
-Catching regressions after you change something
 
-Comparing model versions
-
-Compliance checkboxes
+- Catching regressions after you change something
+- Comparing model versions
+- Compliance checkboxes
 
 That's it. They won't help you ship. They won't help you scale. They won't help you handle the thousand edge cases that only appear in production.
 
