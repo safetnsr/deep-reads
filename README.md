@@ -18,6 +18,9 @@ this isn't a bookmarks folder. it's how we sharpen our thinking by engaging deep
 ### [@manthanguptaa](/@manthanguptaa) — software engineer, technical writer
 10 articles. an educator, not a salesman. reverse-engineers systems better than their own docs — his OpenClaw memory analysis is clearer than the official documentation. the tokenization deep dive is one of the best technical explainers on AI twitter. doesn't build original systems yet, but explains other people's exceptionally well. [full analysis →](/@manthanguptaa/README.md)
 
+### [@gregisenberg](/@gregisenberg) — CEO of Late Checkout, community-first holding company
+14 articles across Substack (2020–2023) and gregisenberg.com (2024–2025). sharpest idea: the Reddit unbundling thesis (2020) — clean logic, aged well. best practical content: the 95/5 hiring framework and the symbiotic growth framing. core weakness: every article is a funnel for his own products. "community" is stretched to mean whatever he's currently selling. the life vision piece is motivational poster content. the Spicy Takes piece is his most honest. [full analysis →](/@gregisenberg/README.md)
+
 ## format
 
 articles are converted to markdown with metadata (author, date, original url, images). full original text, nothing edited or summarized.
