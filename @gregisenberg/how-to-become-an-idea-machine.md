@@ -6,15 +6,19 @@
 
 ---
 
-Zero.
+Before we dive in to this week's newsletter:
 
-That's the median number of likes a tweet gets.
+New pod episode is live with Jackson Fall. We talk about his viral "HustleGPT" AI tweet that got 20M+ impressions, 100k+ followers in 7 days and changed his life. It's a must listen. Listen on [Spotify](https://open.spotify.com/episode/3Crw1Xxcc0n2j2aD7ORivS?si=e88444e4fa794bf6) and [Apple](https://podcasts.apple.com/us/podcast/how-one-tweet-changed-this-mans-life/id1593424985?i=1000605556774) or watch on [YouTube](https://www.youtube.com/watch?v=jskFRJZUl9c&t=4s).
+
+---
+
+That's right. Zero.
 
 It may not feel that way, scrolling through Twitter's ever-changing algorithm and only seeing the posts who've already received external validation. But most Twitter users (the ones we don't see) are screaming to nobody — and that's not where you want to be.
 
 Today, I want to walk through my process for validating my ideas — for both content and products. How I capture my thoughts, choose the best ones, and turn them into beautifully packaged, public-facing winners.
 
-Sharing this because I think this makes you an idea machine.
+Sharing this because I think this can make you an idea machine.
 
 ## Two lists with all of my ideas
 
@@ -34,23 +38,24 @@ I also have a page in my Notes app that is ideas for startups. This one's a bit 
 
 For 30 minutes twice a week, I have time blocked off in my schedule to review my lists. I call it **gardening** — which consists of two ways of thinking deeper:
 
-1. **Prioritize:** What are the most interesting ideas?
-2. **Synthesize:** How can I say this in a more clear & concise way?
+- **Prioritize:** What are the most interesting ideas?
+- **Synthesize:** How can I say this in a more clear & concise way?
 
 ## Why now?
 
 That's the most important question I ask myself when sorting through these ideas.
 
-Why should I be tweeting this now?
-Why does this need to come out right this second?
+Why should I be tweeting this now? Why does this need to come out right this second?
 
 I think the reason I always find myself asking this is because ideas that come out at the right time have the highest likelihood of spreading.
 
-For example: right now, what are a lot of people talking about? How AI can make us more productive.
+For example: right now, what are a lot of people talking about?
 
-I had been sitting on an "how to use AI to boost productivity" free community idea for 8 months. And I had the name too, YouProbablyNeedaRobot.com. Now was the time, and it grew to 25000+ Discord members in 3 weeks. All from a few tweets.
+How AI can make us more productive.
 
-**Timing isn't everything but it's a lot.**
+I had been sitting on a "how to use AI to boost productivity" free community idea for 8 months. And I had the name too, [YouProbablyNeedaRobot.com](http://YouProbablyNeedaRobot.com). Now was the time, and it grew to 25000+ Discord members in 3 weeks. All from a few tweets.
+
+Timing isn't everything but it's a lot.
 
 ## Scroll-stoppers only
 
@@ -68,8 +73,19 @@ So everything up to this point has been internal. If an idea is really sticking 
 
 (Remember: the median tweet gets zero likes, so if you haven't built an audience on Twitter, I think LinkedIn is the best place to start.)
 
-If the idea resonates, I'll turn it into a Twitter thread or a longer LinkedIn post. I'll type it all out in 10-15 minutes, throw it into ChatGPT (my prompt is always "Pretend you're a copy editor"), and once it's cleaned up I'll post that.
+If the idea resonates, I'll turn it into a Twitter thread or a longer LinkedIn post. I'll type it all out in 10–15 minutes, throw it into ChatGPT (my prompt is always "Pretend you're a copy editor"), and once it's cleaned up I'll post that.
 
 If it resonates again, I'll move it to a newsletter or blog post. And if that hits, I know I'm onto something — so it's time to talk about it on my podcast and short-form video.
 
-This is my exact content creation process. I hope you're able to steal something from it and validate your own great ideas.
+This is my exact content creation process. I hope you're able to steal something from it and validate your own great ideas. Also — let me know what your process is, how you go through the life cycle of an idea.
+
+Be well,  
+[Greg Isenberg](http://instagram.com/gregisenberg)
+
+---
+
+- **[Community College](https://communitycollege.latecheckout.studio/):** Enrollment is now open. It's our masterclass to teach you how to build products communities will love. This course sells out 100% of the time. And this time we're including a free landing page for your brand so seats will fly. Check it out [here](https://communitycollege.latecheckout.studio/). Class starts April 17th. P.S: Most people expense the course through their company. Invest in yourself and let them pay ;).
+
+- **[Dispatch](https://dispatch.latecheckout.studio/):** Revamp your company's design game with [Dispatch's membership](https://dispatch.latecheckout.studio/). Elevate your decks, websites, apps, and more to stand out from the competition.
+
+- **[BoringMarketing.com](http://boringmarketing.com):** Use SEO and "boring marketing" to bring you profitable customers. You can also follow along on the Twitter account [here](http://twitter.com/boringmarketer) for some "boring" growth tips.

@@ -6,6 +6,12 @@
 
 ---
 
+Before we dive in, [Community Empire](http://communityempire.co) is LIVE and people are loving it. If you want to build your cash-flowing empire, sign up to the membership [here](http://communityempire.co). You'll get access to all the tools and people necessary to make it happen. Freedom alas. Due to demand, we are closing new applicants for now as of next week. So secure your [spot](http://communityempire.co) if this is your thing.
+
+---
+
+This might be the most important post I've written in a while.
+
 A friend just texted me his "life vision" with me. He outlined in detail how he wanted his life to play out over the next few years and it got me thinking…
 
 So many of us don't really have a compass.
@@ -77,3 +83,23 @@ Remember, even the grandest journeys start with a single step, or as Paul Klee p
 So, what's your line? Where will your dot go?
 
 **Start writing it down.**
+
+---
+
+## 5 things I found interesting this week
+
+- 9 steps to becoming a better writer. Pretty accurate. [Link](https://x.com/zachpogrob/status/1707806800819474787?s=20)
+- Why Chief-of-Staff is a "life-changing hire" by Girdley. [Link](https://x.com/girdley/status/1707368336231702541?s=20) — I interviewed Girdley about his empire before on [Apple Podcasts](https://podcasts.apple.com/us/podcast/how-holdco-legend-michael-girdley-is-playing-multi/id1593424985?i=1000627039158) / [YouTube](https://www.youtube.com/watch?v=l22Jn6nzxFk)
+- How Matt Rife makes $1m/month. I'd never heard of him. The story is interesting. [Link](https://x.com/jeremynickmoser/status/1706650864553775303?s=20)
+- Is Twitter ruining original thought? This got me thinking. [Link](https://x.com/FurqanR/status/1706578786668691643?s=20)
+- "At this point im just building media companies so i can put whatever businesses we start next on the rails and have immediate distro" — Cody Schneider
+
+---
+
+I hope you enjoyed this week's post. Tag me on Twitter if you did.
+
+And if you want to learn more, I'd check my Podcast on [Apple Podcasts](https://podcasts.apple.com/us/podcast/where-it-happens/id1593424985), [Spotify](https://open.spotify.com/show/6aB0v6amo3a8hgTCjlTlvh?si=41b0a7a3e0a84a83) or [YouTube](https://www.youtube.com/@gregisenberg). It's free and will give you free startup ideas.
+
+Greg
+
+P.S: One of the most common questions I get: How do I create beautiful websites and apps like the Late Checkout website? Well — I use [Dispatch](http://meetdispatch.com) for my visual design. Websites, apps, social posts. Anything visual. Hire them [here](http://meetdispatch.com). And I use [BoringMarketing](http://boringmarketing.com) for SEO growth but that's another story.

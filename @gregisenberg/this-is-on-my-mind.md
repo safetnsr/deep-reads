@@ -39,12 +39,19 @@ Same pattern is emerging with AI tools in 2025. The winners won't just have the 
 - Distribution through restaurant POS systems, SMB accountants
 - Could exit to Toast/Square who want to own more of the stack
 
-**7.** I started a new Apple Note called "Questions" to capture all the unknowns swirling in my head. It's already up to 10 entries, mostly around the future of tech and the crazy opportunities emerging. In a world moving this fast, sometimes the best way to get clarity isn't to chase answers, but to double down on asking the right questions.
+**7.** I started a new Apple Note called "Questions" to capture all the unknowns swirling in my head. It's already up to 10 entries, mostly around the future of tech and the crazy opportunities emerging. In a world moving this fast, sometimes the best way to get clarity isn't to chase answers, but to double down on asking the right questions. Embracing uncertainty and wrestling with the juiciest unknowns is how we sharpen our vision and spot the whitespace others miss.
 
 Some sample questions on the list range from "is no code dead?" to "how do you hire AI agents?" to "what's an unpopular business to start right in the tech community now and why?"
 
-**8.** Social proof isn't just for websites — it's becoming live entertainment. Businesses that show their love in real-time are winning.
+Let me know if any of these spark thoughts for you.
+
+**8.** More random thoughts, tutorials and startup ideas on the podcast. Some new episodes for you to listen to:
+
+- How to build Pixar/Disney using AI (ChatGPT, Leonardo AI, Kling AI, ElevenLabs). [YouTube](https://www.youtube.com/watch?v=Uc3xMimbhkw), [Spotify](https://open.spotify.com/episode/1gZjLlKHPb0VEnGioY9Jqt?si=ba36b1a290e84ba5), [Apple](https://podcasts.apple.com/us/podcast/the-startup-ideas-podcast/id1593424985?i=1000689404197).
+- 4 microsaas ideas that could do $100k/month. [YouTube](https://www.youtube.com/watch?v=94lvilsigiE&t), [Spotify](https://open.spotify.com/episode/0tbQOiWKvTKghvKw08RRcV?si=56432e47312c40ad), [Apple](https://podcasts.apple.com/us/podcast/the-startup-ideas-podcast/id1593424985?i=1000688627163).
 
 ---
 
 *I write posts like this every week, packed with free startup ideas, insights on business building, and strategies for succeeding in the online world. It's called Greg's Letter.*
+
+[Join over 100,000 people and have it delivered straight to your inbox.](https://www.gregisenberg.com/)
