@@ -58,9 +58,9 @@ the [generative AI: the next consumer platform](generative-ai-the-next-consumer-
 
 same issue with [AI x travel](adventure-is-out-there-ai-x-travel.md). the categories (inspiration, itinerary, booking, on-trip) are logical but not differentiated. every category gets the same treatment: "here's what AI could do here, here are some early examples." there's no prediction about which category wins first or which has the hardest structural problems. it's a map, not a compass.
 
-### the "vibe code" piece is incomplete
+### the "vibe code" piece is sharp but stops short
 
-[most people can't vibe code](most-people-cant-vibe-code.md) is her most recent piece (february 2026) and unfortunately the content was largely paywalled during fetch. from what's available: the diagnosis (non-technical users can't prompt well, can't debug, can't deploy) seems correct. the thesis (product design around AI matters as much as the AI itself) is well-precedented in her prior writing. but without the full text it's hard to evaluate the specific recommendations.
+[most people can't vibe code](most-people-cant-vibe-code.md) is her most recent piece (february 2026) and her clearest consumer-first argument. the [four problems framework](most-people-cant-vibe-code.md#the-four-problems) (setup, security, imagination, deployment) is immediately useful. her use of herself as a test case — "my success rate is probably 50/50" and she references [struggling with openclaw](most-people-cant-vibe-code.md#the-non-technical-mindset) — adds credibility. the squarespace/canva analogy for [the opportunity](most-people-cant-vibe-code.md#the-opportunity) is well-chosen. the "imagination problem" is the most original insight — non-technical people don't just lack tools, they lack mental models for what's buildable. but the piece stops at diagnosis. the companies she names (poke, wabi) get one sentence each. a deeper analysis of what "products for people" actually looks like in practice — what UI patterns work, what fails, what the retention curves show — would elevate this from good framework piece to essential reading.
 
 ### the ads piece stretches across two authors
 
